@@ -1572,18 +1572,18 @@
         import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Konfigurasi Database Real-time
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID" };
+        const fbConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : null;
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-undangan';
         
         let db;
         let auth;
         let isFirebaseConnected = false;
         let localWishes = []; // Fallback lokal jika database eksternal offline
+
+      
 
         // Referensi UI Elements
         const wishForm = document.getElementById('wishForm');
