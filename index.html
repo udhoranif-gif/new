@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Ranif & Riris</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for headers & Inter for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+        /* Custom Blue and Gold Theme Colors representing TNI AU */
+        .bg-tniau-dark {
+            background-color: #0a192f;
+        }
+        .bg-tniau-blue {
+            background-color: #0d2c54;
+        }
+        .text-gold {
+            color: #d4af37;
+        }
+        .border-gold {
+            border-color: #d4af37;
+        }
+        .bg-gold {
+            background-color: #d4af37;
+        }
+        /* Scroll pop-up effect styling */
+        .reveal-element {
+            opacity: 0;
+            transform: scale(0.92) translateY(30px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-element.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        /* Custom keyframe for spinning music vinyl disc */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        /* Lock scroll on cover load */
+        .no-scroll {
+            overflow: hidden;
+            height: 100vh;
+        }
+        /* Soft blue glow effect */
+        .blue-glow {
+            box-shadow: 0 0 25px rgba(29, 78, 216, 0.15);
+        }
+        /* Glassmorphism panel styling */
+        .glass-panel {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body class="no-scroll">
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Logic to get name from URL Parameter
+            // Example URL: www.domain.com/undangan?to=Budi+Santoso
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Check for 'to' parameter, fallback to 'nama' parameter
+            let guestNameRaw = urlParams.get('to') || urlParams.get('nama');
+            
+            const guestNameElement = document.getElementById('guest-name');
+            
+            if (guestNameRaw) {
+                // Sanitize input to prevent XSS attacks
+                const sanitizedName = guestNameRaw
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+                
+                guestNameElement.innerHTML = sanitizedName;
+            } else {
+                // Default if no parameter is found
+                guestNameElement.innerHTML = 'Tamu Undangan';
+            }
+
+            // 2. Logic to handle "Buka Undangan" button click
+            const openBtn = document.getElementById('open-btn');
+            const cover = document.getElementById('cover');
+
+            openBtn.addEventListener('click', () => {
+                // Add class that triggers the CSS transition (slide up & fade out)
+                cover.classList.add('open');
+                
+                // Optional: You could play background music here
+                // const bgMusic = new Audio('path/to/your/song.mp3');
+                // bgMusic.play();
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Background Music Audio -->
+    <audio id="bgMusic" loop>
+        <source src="musik/Alex Warren - Ordinary (Official Music Video).mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Welcome/Cover Screen Overlay -->
+    <div id="coverScreen" class="fixed inset-0 z-50 flex flex-col items-center justify-between bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#020617] text-center px-4 py-12 transition-all duration-1000 ease-in-out">
+        <!-- Air Force / Military Prestige Border & Accent -->
+        <div class="absolute inset-0 border-4 border-double border-yellow-600/20 m-4 pointer-events-none rounded-2xl"></div>
+        
+
+        <div class="my-auto space-y-6">
+            <p class="text-sm tracking-[0.3em] text-blue-200 uppercase font-medium">UNDANGAN PERNIKAHAN DIGITAL</p>
+            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold leading-tight drop-shadow-lg">
+                Ranif <span class="font-cursive text-gold text-5xl md:text-7xl block my-2">&</span> Riris
+            </h1>
+            <p class="text-xs md:text-sm tracking-[0.2em] text-gray-300">Minggu, 25 Oktober 2026</p>
+            
+            <div class="max-w-sm mx-auto bg-blue-950/40 border border-blue-900/50 backdrop-blur-md rounded-xl p-4 mt-6">
+                <p class="text-[11px] text-gray-400 uppercase tracking-widest mb-1">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                <p class="text-lg font-serif font-bold text-yellow-400" id="recipientName">Tamu Undangan Spesial</p>
+            </div>
+        </div>
+
+        <div class="mb-6 z-10">
+            <button onclick="openInvitation()" class="px-8 py-3.5 bg-gradient-to-r from-yellow-600 to-amber-500 text-white font-semibold rounded-full shadow-lg hover:shadow-yellow-500/30 hover:scale-105 transition duration-300 flex items-center gap-3 mx-auto">
+                <i class="fa-solid fa-envelope-open-text animate-bounce"></i>
+                Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Audio Control Disk -->
+    <div id="audioControl" class="fixed bottom-6 right-6 z-40 hidden flex flex-col gap-3">
+        <button onclick="toggleMusic()" class="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-600 to-amber-500 flex items-center justify-center text-white shadow-xl hover:scale-110 transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400" title="Putar/Jeda Musik">
+            <i id="musicIcon" class="fa-solid fa-compact-disc text-xl animate-spin-slow"></i>
+        </button>
+    </div>
+
+    <!-- Floating AI Wedding Assistant Widget (Dirgantara AI Companion) -->
+    <div id="aiChatWidget" class="fixed bottom-6 left-6 z-40 hidden">
+        <!-- Floating chat bubble button -->
+        <button onclick="toggleAIChat()" class="w-14 h-14 rounded-full bg-blue-700 hover:bg-blue-600 border border-yellow-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 transition duration-300 relative group animate-pulse">
+            <i class="fa-solid fa-robot text-xl"></i>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+            </span>
+            <div class="absolute right-16 bg-blue-900 border border-yellow-500/50 text-xs text-white py-1.5 px-3 rounded-lg hidden group-hover:block whitespace-nowrap shadow-lg">
+                Tanya Asisten AI Dirgantara
+            </div>
+        </button>
+
+        <!-- Chat window container (Initially Hidden) -->
+        <div id="aiChatWindow" class="absolute bottom-16 left-0 w-80 md:w-96 h-[450px] rounded-2xl glass-panel shadow-2xl flex-col hidden overflow-hidden border border-yellow-500/50 transition-all duration-300 transform scale-95 origin-bottom-left">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-[#0d2c54] to-blue-900 px-4 py-3 border-b border-yellow-500/30 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center border border-yellow-500/60">
+                        <i class="fa-solid fa-plane-up text-yellow-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white tracking-wide">Asisten AI Dirgantara</h4>
+                        <span class="text-[9px] text-green-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping"></span> Online
+                        </span>
+                    </div>
+                </div>
+                <button onclick="toggleAIChat()" class="text-gray-400 hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div id="aiChatBody" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-relaxed">
+                <div class="bg-blue-950/70 border border-blue-900/40 p-3 rounded-xl max-w-[85%] text-gray-300">
+                    Halo! Saya <strong>Asisten AI Dirgantara</strong>. Saya siap membantu Anda seputar persiapan kehadiran di pernikahan <strong>Ranif & Riris</strong>.
+                    <br><br>
+                    Anda bisa tanyakan apa saja, seperti:
+                    <ul class="list-disc pl-4 mt-1.5 space-y-1 text-yellow-400">
+                        <li>Rekomendasi Dress Code (Warna Tema)</li>
+                        <li>Jadwal & Lokasi Acara</li>
+                        <li>Tulis puisi pernikahan puitis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Suggestion Quick Chips -->
+            <div class="px-4 py-2 border-t border-blue-950 flex flex-wrap gap-1.5 bg-blue-950/20">
+                <button onclick="sendQuickAIChat('Rekomendasi Dress Code apa?')" class="text-[10px] bg-blue-900/60 border border-blue-800 text-gray-300 py-1 px-2.5 rounded-full hover:border-yellow-500/50 hover:text-white transition">Dress Code</button>
+                <button onclick="sendQuickAIChat('Berikan ringkasan lokasi dan waktu acara')" class="text-[10px] bg-blue-900/60 border border-blue-800 text-gray-300 py-1 px-2.5 rounded-full hover:border-yellow-500/50 hover:text-white transition">Lokasi & Waktu</button>
+                <button onclick="sendQuickAIChat('Tulis puisi cinta romantis militer untuk Ranif & Riris')" class="text-[10px] bg-blue-900/60 border border-blue-800 text-gray-300 py-1 px-2.5 rounded-full hover:border-yellow-500/50 hover:text-white transition">Puisi Romantis</button>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="p-3 bg-blue-950/80 border-t border-yellow-500/20 flex gap-2">
+                <input type="text" id="aiChatInput" onkeypress="handleAIChatKeyPress(event)" placeholder="Ketik pertanyaan Anda di sini..." class="flex-1 bg-black/40 border border-blue-900/50 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-yellow-500 text-xs">
+                <button onclick="sendAIChat()" class="w-8 h-8 rounded-xl bg-yellow-600 hover:bg-yellow-500 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Content Container (Starts Hidden, Revealed smoothly) -->
+    <div id="mainContent" class="hidden opacity-0 transition-opacity duration-1000">
+
+        <!-- Hero Banner / Main Invitation Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#040c18] overflow-hidden">
+            <!-- Decorative Subtle Cloud background overlay for TNI AU theme -->
+            <div class="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none">
+                <div class="absolute w-[500px] h-[300px] bg-blue-400 blur-[100px] -top-20 -left-20 rounded-full"></div>
+                <div class="absolute w-[600px] h-[400px] bg-sky-300 blur-[120px] bottom-10 right-10 rounded-full"></div>
+            </div>
+            
+            <div class="relative z-10 space-y-8 py-20 max-w-4xl mx-auto">
+                <div class="reveal-element active">
+                    <p class="text-xs md:text-sm tracking-[0.4em] text-yellow-400 uppercase font-bold">THE WEDDING OF</p>
+                    <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto my-3"></div>
+                </div>
+
+                <h2 class="reveal-element active text-5xl md:text-8xl font-serif text-white font-extrabold leading-none drop-shadow-md">
+                    Ranif <span class="font-cursive text-gold block my-4 text-6xl md:text-9xl">&</span> Riris
+                </h2>
+
+                <p class="reveal-element text-sm md:text-base tracking-[0.2em] text-blue-200">KAMI MENGUNDANG ANDA UNTUK MERAYAKAN PERNIKAHAN KAMI</p>
+
+                <!-- Countdown Section -->
+                <div class="reveal-element grid grid-cols-4 gap-2 md:gap-4 max-w-md md:max-w-lg mx-auto bg-blue-950/60 border border-blue-900/50 backdrop-blur-md rounded-2xl p-4 md:p-6 blue-glow">
+                    <div class="text-center">
+                        <span id="days" class="text-3xl md:text-4xl font-serif font-bold text-gold">00</span>
+                        <span class="block text-[10px] md:text-xs uppercase text-blue-200 tracking-wider mt-1">Hari</span>
+                    </div>
+                    <div class="text-center border-l border-blue-900/80">
+                        <span id="hours" class="text-3xl md:text-4xl font-serif font-bold text-gold">00</span>
+                        <span class="block text-[10px] md:text-xs uppercase text-blue-200 tracking-wider mt-1">Jam</span>
+                    </div>
+                    <div class="text-center border-l border-blue-900/80">
+                        <span id="minutes" class="text-3xl md:text-4xl font-serif font-bold text-gold">00</span>
+                        <span class="block text-[10px] md:text-xs uppercase text-blue-200 tracking-wider mt-1">Menit</span>
+                    </div>
+                    <div class="text-center border-l border-blue-900/80">
+                        <span id="seconds" class="text-3xl md:text-4xl font-serif font-bold text-gold">00</span>
+                        <span class="block text-[10px] md:text-xs uppercase text-blue-200 tracking-wider mt-1">Detik</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quranic Verse (Surat Ar-Rum 21) -->
+        <section class="py-20 px-4 bg-[#040c18] text-center relative border-t border-b border-blue-950">
+            <div class="max-w-3xl mx-auto space-y-6 bg-[#0a192f]/50 border border-blue-900/40 p-8 rounded-3xl relative">
+                <!-- Military Golden Wing background crest outline subtle -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+                    <i class="fa-solid fa-shield-halved text-[200px] text-yellow-400"></i>
+                </div>
+                
+                <div class="reveal-element">
+                    <i class="fa-solid fa-heart text-yellow-500 text-3xl mb-4 animate-pulse"></i>
+                    <h3 class="text-xl md:text-2xl font-serif text-white font-bold mb-4">Surat Ar-Rum Ayat 21</h3>
+                </div>
+
+                <div class="reveal-element leading-loose text-right text-xl md:text-2xl font-serif text-yellow-100 my-6 max-w-2xl mx-auto">
+                    وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنfُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَءَايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+                </div>
+
+                <div class="reveal-element text-sm md:text-base text-gray-300 italic max-w-2xl mx-auto leading-relaxed">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                </div>
+            </div>
+        </section>
+
+        <!-- Bride and Groom Section (Mempelai) -->
+        <section id="mempelai" class="py-24 px-4 bg-gradient-to-b from-[#040c18] to-[#0a192f] text-center">
+            <div class="max-w-6xl mx-auto">
+                <div class="reveal-element mb-16">
+                    <span class="text-xs tracking-[0.3em] text-yellow-500 uppercase font-bold">MEMPELAI</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-white font-extrabold mt-2">Dua Hati Satu Jiwa</h2>
+                    <p class="text-sm text-blue-200 mt-3 max-w-lg mx-auto">Assalamu’alaikum Warahmatullahi Wabarakatuh. Dengan memohon rahmat dan rida Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i sekalian untuk hadir di pernikahan kami.</p>
+                </div>
+
+                <!-- Couples Profile Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start mt-12">
+                    
+                    <!-- Groom (Muhammad Ranif - TNI AU Theme Card) -->
+                    <div class="reveal-element bg-[#081730] border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/50 transition duration-500 shadow-xl group">
+                        <!-- TNI AU Ribbon Design element -->
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-700 to-yellow-600 text-white text-[11px] font-bold tracking-widest px-6 py-1 rounded-full uppercase shadow">
+                            PRAJURIT DIRGANTARA
+                        </div>
+                        
+                        <div class="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-yellow-500 flex items-center justify-center bg-blue-950 shadow-inner mt-4 group-hover:scale-105 transition duration-500 relative">
+                            <!-- TNI AU silhouette wings background -->
+                            <i class="fa-solid fa-plane-up text-blue-700/20 text-[80px] absolute"></i>
+                            <div class="text-5xl text-gold font-cursive z-10">R</div>
+                        </div>
+
+                        <h3 class="text-2xl font-serif font-bold text-white mt-6">Muhammad Ranif</h3>
+                        <p class="text-yellow-400 font-semibold text-sm tracking-widest mt-1">"Ranif"</p>
+                        
+                        <div class="w-16 h-[2px] bg-yellow-500/50 mx-auto my-4"></div>
+                        
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Anak pertama dari pasangan:
+                        </p>
+                        <p class="text-base font-medium text-white mt-1">Bapak Suherman</p>
+                        <p class="text-sm text-gray-400 font-light">&</p>
+                        <p class="text-base font-medium text-white">Ibu (Almh) Novita</p>
+                    </div>
+
+                    <!-- Bride (Prima Rizki Imami) -->
+                    <div class="reveal-element bg-[#081730] border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/50 transition duration-500 shadow-xl group">
+                        <!-- Elegant Gold Lace element -->
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-600 to-amber-500 text-white text-[11px] font-bold tracking-widest px-6 py-1 rounded-full uppercase shadow">
+                            PUTRI ANGGUN
+                        </div>
+
+                        <!-- Bride Avatar -->
+                        <div class="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-yellow-500 flex items-center justify-center bg-blue-950 shadow-inner mt-4 group-hover:scale-105 transition duration-500 relative">
+                            <i class="fa-solid fa-leaf text-yellow-600/20 text-[80px] absolute"></i>
+                            <div class="text-5xl text-gold font-cursive z-10">R</div>
+                        </div>
+
+                        <h3 class="text-2xl font-serif font-bold text-white mt-6">Prima Rizki Imami</h3>
+                        <p class="text-yellow-400 font-semibold text-sm tracking-widest mt-1">"Riris"</p>
+                        
+                        <div class="w-16 h-[2px] bg-yellow-500/50 mx-auto my-4"></div>
+                        
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Anak pertama dari pasangan:
+                        </p>
+                        <p class="text-base font-medium text-white mt-1">Bapak Latif</p>
+                        <p class="text-sm text-gray-400 font-light">&</p>
+                        <p class="text-base font-medium text-white">Ibu Mujiati</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details Section (Akad & Resepsi) -->
+        <section id="acara" class="py-24 px-4 bg-[#040c18] relative">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.08)_0%,_transparent_70%)] pointer-events-none"></div>
+            
+            <div class="max-w-5xl mx-auto relative z-10 text-center">
+                <div class="reveal-element mb-16">
+                    <span class="text-xs tracking-[0.3em] text-yellow-500 uppercase font-bold">WAKTU & TEMPAT</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-white font-extrabold mt-2">Rangkaian Acara</h2>
+                    <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-12 items-stretch">
+                    
+                    <!-- Akad Nikah Card -->
+                    <div class="reveal-element bg-[#081730]/70 border border-blue-900/40 rounded-3xl p-8 flex flex-col justify-between shadow-xl backdrop-blur-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-blue-700/20 to-transparent pointer-events-none rounded-tr-3xl"></div>
+                        
+                        <div>
+                            <div class="w-14 h-14 bg-blue-950 border border-yellow-500/50 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-white mb-2">Akad Nikah</h3>
+                            <div class="w-12 h-[1px] bg-yellow-500/30 mx-auto mb-6"></div>
+                            
+                            <div class="space-y-4 text-gray-300 text-sm">
+                                <div class="flex items-center justify-center gap-3">
+                                    <i class="fa-regular fa-calendar-check text-yellow-400"></i>
+                                    <span>Minggu, 25 Oktober 2026</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-3">
+                                    <i class="fa-regular fa-clock text-yellow-400"></i>
+                                    <span>08.00 WIB s/d Selesai</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-3 items-start">
+                                    <i class="fa-solid fa-location-dot text-yellow-400 mt-1"></i>
+                                    <span class="max-w-xs text-center">Kediaman Mempelai Wanita (Kediri)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resepsi Card -->
+                    <div class="reveal-element bg-[#081730]/70 border border-blue-900/40 rounded-3xl p-8 flex flex-col justify-between shadow-xl backdrop-blur-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-blue-700/20 to-transparent pointer-events-none rounded-tr-3xl"></div>
+                        
+                        <div>
+                            <div class="w-14 h-14 bg-blue-950 border border-yellow-500/50 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fa-solid fa-champagne-glasses text-yellow-400 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-white mb-2">Resepsi Pernikahan</h3>
+                            <div class="w-12 h-[1px] bg-yellow-500/30 mx-auto mb-6"></div>
+                            
+                            <div class="space-y-4 text-gray-300 text-sm">
+                                <div class="flex items-center justify-center gap-3">
+                                    <i class="fa-regular fa-calendar-check text-yellow-400"></i>
+                                    <span>Minggu, 25 Oktober 2026</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-3">
+                                    <i class="fa-regular fa-clock text-yellow-400"></i>
+                                    <span>08.00 WIB s/d Selesai</span>
+                                </div>
+                                <div class="flex items-center justify-center gap-3 items-start">
+                                    <i class="fa-solid fa-location-dot text-yellow-400 mt-1"></i>
+                                    <span class="max-w-xs text-center">Kediaman Mempelai Wanita (Kediri)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Google Maps Link -->
+                <div class="reveal-element mt-12 max-w-2xl mx-auto bg-gradient-to-b from-[#0a192f] to-[#081730] border border-blue-900/40 p-6 rounded-3xl shadow-lg">
+                    <div class="text-center mb-6">
+                        <img src="gbr/Gemini_Generated_Image_juvh37juvh37juvh.jpg" alt="">
+                        <i class="fa-solid fa-map-location-dot text-yellow-400 text-3xl mb-2"></i>
+                        <h4 class="text-lg font-serif font-bold text-white">Petunjuk Lokasi Maps</h4>
+                        <p class="text-xs text-gray-300 mt-1">Klik tombol di bawah ini untuk menavigasi rute langsung ke kediaman mempelai wanita</p>
+                    </div>
+                    <a href="https://maps.app.goo.gl/TrYGVYo113xu8PE39?g_st=ac" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-blue-700 to-indigo-600 text-white font-semibold rounded-full shadow-lg hover:from-blue-600 hover:to-indigo-500 transition duration-300 hover:scale-105">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        Buka Google Maps
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Cosmos 3D Ring Gallery</title>
+    
+    <!-- Tailwind CSS for modern layout styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Space Grotesk & Outfit for modern futuristic feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for high-end iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind Config for custom theme mapping -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        cosmic: {
+                            950: '#030712',
+                            900: '#0B1528',
+                            800: '#112240',
+                            500: '#3B82F6',
+                            accent: '#00F0FF',
+                            neonPink: '#FF007F'
+                        }
+                    },
+                    animation: {
+                        'slow-spin': 'spinAround 25s linear infinite',
+                        'drift-slow': 'drift 15s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        spinAround: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        drift: {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '50%': { transform: 'translate(5%, 5%) scale(1.1)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.3', filter: 'brightness(1)' },
+                            '50%': { opacity: '0.6', filter: 'brightness(1.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at 50% 50%, #0d1e3d 0%, #060b14 100%);
+            color: #f1f5f9;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* 3D Scene viewport setup */
+        .viewport-3d {
+            perspective: 1400px;
+            perspective-origin: 50% 35%;
+            transform-style: preserve-3d;
+        }
+
+        /* The moving core container of the 3D ring */
+        .carousel-ring {
+            position: relative;
+            width: 240px;
+            height: 320px;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Individual Card container in 3D Space */
+        .carousel-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        /* Holographic border glow */
+        .neon-glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25), inset 0 0 15px rgba(0, 240, 255, 0.15);
+        }
+        .neon-glow-cyan:hover {
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Glassmorphism background filters */
+        .glass-panel {
+            background: rgba(11, 21, 40, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 4px;
+        }
+
+        /* Lightbox 3D Entry Animation (Pierce) */
+        .perspective-lightbox {
+            perspective: 2000px;
+            transform-style: preserve-3d;
+        }
+
+        .pierce-in {
+            animation: pierceIn 0.85s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        .pierce-out {
+            animation: pierceOut 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+        }
+
+        @keyframes pierceIn {
+            0% {
+                opacity: 0;
+                transform: translateZ(-2500px) scale(0.1) rotateX(720deg) rotateY(1080deg);
+                filter: blur(25px) brightness(2.5) drop-shadow(0 0 50px #00F0FF);
+            }
+            100% {
+                opacity: 1;
+                transform: translateZ(0) scale(1) rotateX(0) rotateY(0);
+                filter: blur(0) brightness(1) drop-shadow(0 0 0 transparent);
+            }
+        }
+
+        @keyframes pierceOut {
+            0% {
+                opacity: 1;
+                transform: translateZ(0) scale(1) rotateX(0) rotateY(0);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateZ(-2000px) scale(0) rotateX(-360deg) rotateY(-540deg);
+                filter: blur(15px) brightness(0.2);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased select-none font-sans overflow-hidden">
+
+    <!-- Ambient Neon Glowing Orbs Background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-cosmic-500/10 rounded-full blur-[120px] animate-drift-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[45vw] h-[45vw] bg-cosmic-accent/10 rounded-full blur-[140px] animate-drift-slow" style="animation-delay: -5s;"></div>
+        <!-- Digital Grid Line Overlay -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(3,7,18,0.85)_80%)]"></div>
+    </div>
+
+    <!-- Main Wrapper Structure -->
+    <div class="relative min-h-screen flex flex-col justify-between z-10 p-4 md:p-6 overflow-hidden">
+        
+        <!-- Top App Bar / Title -->
+        <header class="w-full max-w-7xl mx-auto flex flex-col items-center text-center pt-2 md:pt-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-full glass-panel text-xs font-semibold uppercase tracking-widest text-cosmic-accent animate-pulse-glow">
+                <i class="ph-bold ph-globe-hemisphere-east text-sm"></i>
+                ALBUM FOTO
+            </div>
+            <h1 class="font-display text-3xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-blue-400">
+                Momen Bahagia Kami <span class="text-cosmic-accent">3D</span>
+            </h1>
+            <p class="text-sm text-blue-200/70 max-w-md mt-1 font-light">
+                Tiap tatapan, senyuman, dan langkah yang kami ambil menuju gerbang kehormatan sakinah mawaddah warahmah.
+            </p>
+            
+        </header>
+
+        <!-- Centerpiece: 3D Scene Viewport -->
+        <main class="w-full flex-1 flex flex-col items-center justify-center my-4 relative">
+            
+            <!-- Helper Instruction Box (Dismissible) -->
+            <div id="gesture-hint" class="absolute top-2 px-4 py-2 glass-panel rounded-xl text-xs text-cyan-200/80 flex items-center gap-2 z-20 pointer-events-none transition-all duration-500 opacity-90 transform translate-y-0">
+                <i class="ph-bold ph-hand-swipe-left text-base animate-bounce"></i>
+                Geser layar atau drag mouse untuk memutar cincin galeri
+            </div>
+
+            <!-- 3D Outer Box Frame -->
+            <div class="viewport-3d w-full h-[360px] md:h-[450px] flex items-center justify-center">
+                
+                <!-- Inner 3D Interactive Ring containing 6 Cards -->
+                <div id="carousel-ring" class="carousel-ring">
+                    <!-- Cards will be populated dynamically via Javascript with initial stacked transforms -->
+                </div>
+                
+            </div>
+        </main>
+
+        <!-- Bottom Controls Glass Panel -->
+        <footer class="w-full max-w-3xl mx-auto z-10">
+            <div class="glass-panel rounded-2xl p-4 md:p-5 shadow-2xl flex flex-col gap-4">
+                
+                <!-- Command / Navigation Buttons -->
+                <div class="flex items-center justify-between gap-4 flex-wrap">
+                    
+                    <!-- Left Action Controls -->
+                    <div class="flex items-center gap-2">
+                        <button id="btn-prev" class="w-12 h-12 rounded-xl glass-panel text-white hover:text-cosmic-accent flex items-center justify-center hover:scale-105 transition-all duration-300 group shadow-lg">
+                            <i class="ph-bold ph-caret-double-left text-xl group-hover:-translate-x-1 transition-transform"></i>
+                        </button>
+                        <button id="btn-next" class="w-12 h-12 rounded-xl glass-panel text-white hover:text-cosmic-accent flex items-center justify-center hover:scale-105 transition-all duration-300 group shadow-lg">
+                            <i class="ph-bold ph-caret-double-right text-xl group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+
+                    <!-- Layout Mode Selector -->
+                    <div class="flex items-center gap-1 bg-cosmic-950/60 p-1 rounded-xl border border-blue-900/40">
+                        <button id="btn-ring-mode" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cosmic-500 text-white shadow transition-all duration-300">
+                            Cincin 3D
+                        </button>
+                        <button id="btn-stack-mode" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-300/80 hover:text-white hover:bg-white/5 transition-all duration-300">
+                            Satukan (Stack)
+                        </button>
+                    </div>
+
+                    <!-- Autoplay & Interactive Elements -->
+                    <div class="flex items-center gap-2">
+                        <button id="btn-autoplay" class="px-4 py-2.5 rounded-xl glass-panel text-xs font-bold text-cosmic-accent flex items-center gap-2 hover:bg-white/5 transition-all duration-300">
+                            <i class="ph-bold ph-play-pause text-base animate-pulse"></i>
+                            Autoplay: <span id="autoplay-status">ON</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Range Sliders for interactive variables (Tilt, Distance) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-blue-900/30 text-xs">
+                    
+                    <!-- Tilt (X Rotation) Slider -->
+                    <div class="flex items-center gap-3">
+                        <span class="text-blue-300 font-medium w-16">Kemiringan:</span>
+                        <input id="slider-tilt" type="range" min="-30" max="15" value="-10" class="flex-1 accent-cosmic-accent bg-cosmic-950/80 rounded-lg h-2 appearance-none cursor-pointer">
+                        <span id="label-tilt" class="text-cosmic-accent font-mono w-8 text-right">-10°</span>
+                    </div>
+
+                    <!-- Distance (Zoom) Slider -->
+                    <div class="flex items-center gap-3">
+                        <span class="text-blue-300 font-medium w-16">Lebar Ring:</span>
+                        <input id="slider-distance" type="range" min="180" max="450" value="280" class="flex-1 accent-cosmic-accent bg-cosmic-950/80 rounded-lg h-2 appearance-none cursor-pointer">
+                        <span id="label-distance" class="text-cosmic-accent font-mono w-8 text-right">280px</span>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </div>
+
+    <!-- Fullscreen Lightbox / Popup Modal Container -->
+    <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 bg-cosmic-950/95 backdrop-blur-2xl perspective-lightbox">
+        
+        <!-- Top Toolbar Actions -->
+        <div class="absolute top-0 left-0 right-0 p-4 md:p-6 flex justify-between items-center z-50">
+            <div class="text-xs font-mono text-cyan-400 tracking-wider flex items-center gap-2">
+                <span class="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></span>
+                PREVIEWING METADATA
+            </div>
+            <button id="close-lightbox" class="p-3 rounded-xl bg-white/5 hover:bg-red-500/80 text-white border border-white/10 hover:border-red-500/50 backdrop-blur-md transition-all duration-300 shadow-2xl transform hover:rotate-90">
+                <i class="ph ph-x text-xl md:text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- 3D Pierce Container (Inner Box) -->
+        <div id="lightbox-content" class="w-full max-w-5xl h-full p-4 md:p-12 flex flex-col justify-center items-center">
+            
+            <!-- Main Content Area: Flex layout split into Image Frame and Metadata Panel -->
+            <div class="w-full max-h-[80vh] flex flex-col lg:flex-row gap-6 glass-panel rounded-3xl p-4 md:p-6 shadow-[0_0_80px_rgba(0,240,255,0.35)] overflow-hidden">
+                
+                <!-- Left: Holographic Glowing Image Frame -->
+                <div class="flex-1 relative flex items-center justify-center bg-cosmic-950/50 rounded-2xl overflow-hidden min-h-[250px] lg:min-h-[450px] border border-cyan-500/15">
+                    
+                    <!-- Loading placeholder -->
+                    <div id="lightbox-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-cosmic-900/80 backdrop-blur z-20 transition-all duration-300">
+                        <i class="ph-bold ph-spinner-gap animate-spin text-4xl text-cosmic-accent"></i>
+                        <span class="text-xs text-blue-300 mt-2 font-mono">RENDERING 3D ASSETS...</span>
+                    </div>
+
+                    <!-- Glowing Canvas Element for futuristic frame -->
+                    <div class="absolute inset-0 border border-cosmic-accent/30 pointer-events-none rounded-2xl"></div>
+                    
+                    <img id="lightbox-img" src="" alt="High resolution landscape" class="max-w-full max-h-[60vh] lg:max-h-[70vh] object-contain rounded-xl opacity-0 transition-all duration-500 drop-shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+                </div>
+
+                <!-- Right: Information & Action Glass Panel -->
+                <div class="w-full lg:w-[360px] flex flex-col justify-between gap-6 relative z-10">
+                    
+                    <!-- Text Details -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <span id="lightbox-category" class="px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-cosmic-accent bg-cyan-950/80 border border-cyan-500/40 rounded-full"></span>
+                            <span id="lightbox-id" class="text-xs font-mono text-blue-400">#001</span>
+                        </div>
+                        
+                        <h2 id="lightbox-title" class="font-display text-2xl md:text-3xl font-extrabold text-white tracking-tight"></h2>
+                        <p id="lightbox-desc" class="text-sm text-blue-200/80 font-light leading-relaxed"></p>
+                        
+                        <!-- Technical Camera Metadata Panel -->
+                        <div class="bg-cosmic-950/60 rounded-xl p-3 border border-blue-900/30 text-[11px] font-mono grid grid-cols-2 gap-2 mt-2">
+                            <div class="flex flex-col text-blue-400">
+                                <span></span>
+                                <span id="meta-camera" class="text-white font-sans font-semibold mt-0.5">Sony α7R IV</span>
+                            </div>
+                            <div class="flex flex-col text-blue-400">
+                                <span></span>
+                                <span id="meta-lens" class="text-white font-sans font-semibold mt-0.5">24-70mm f/2.8 GM</span>
+                            </div>
+                            <div class="flex flex-col text-blue-400">
+                                <span></span>
+                                <span id="meta-iso" class="text-white font-sans font-semibold mt-0.5">ISO 100 • f/8 • 1/250s</span>
+                            </div>
+                            <div class="flex flex-col text-blue-400">
+                                <span></span>
+                                <span id="meta-loc" class="text-white font-sans font-semibold mt-0.5">Planet Earth</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactions Frame -->
+                    <div class="flex flex-col gap-2 pt-4 border-t border-blue-900/30">
+                        <div class="flex items-center gap-2">
+                            <!-- Favorite/Like Button with Counter -->
+                            <button id="btn-like" class="flex-1 py-3 px-4 rounded-xl bg-white/5 border border-white/10 hover:border-cosmic-neonPink/40 hover:bg-cosmic-neonPink/10 hover:text-cosmic-neonPink flex items-center justify-center gap-2 font-semibold transition-all duration-300">
+                                <i class="ph-bold ph-heart"></i>
+                                <span>Suka</span>
+                                <span id="like-counter" class="text-xs font-mono bg-white/10 px-2 py-0.5 rounded-full text-white">42</span>
+                            </button>
+                            
+                            <!-- Dummy Share Link -->
+                            <button id="btn-share" class="py-3 px-4 rounded-xl bg-white/5 border border-white/10 hover:bg-blue-500/10 hover:text-cosmic-accent hover:border-cosmic-accent/40 flex items-center justify-center transition-all duration-300">
+                                <i class="ph-bold ph-share-network text-lg"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Close Window Button -->
+                        <button id="btn-lightbox-close" class="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyan-950/50">
+                            Kembali Ke Ring 3D
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // High quality premium imagery data matching cosmic-blue aesthetic
+        const photoData = [
+            { 
+                id: '01', 
+                src: 'gbr/2.jpg',
+                title: 'Ranu Regulo', 
+                desc: 'Ranu Regulo adalah danau alami eksotis yang terletak di Desa Ranu Pani, Kecamatan Senduro, Kabupaten Lumajang, Jawa Timur. Berada di ketinggian 2.100 mdpl di kawasan Taman Nasional Bromo Tengger Semeru (TNBTS), destinasi ini menawarkan pesona danau berkabut yang tenang dan sejuk, dengan suhu rata-rata 10 derajat Celcius', 
+                likes: 100
+            },
+            { 
+               id: '03', 
+                src: 'gbr/3.jpg', 
+                title: 'Gunung Bromo', 
+                desc: 'Gunung Bromo adalah gunung berapi aktif setinggi 2.614 mdpl di Jawa Timur. Terkenal dengan pemandangan matahari terbit, lautan pasir luas, dan kawah berasap, kawasan ini dikelola oleh Taman Nasional Bromo Tengger Semeru.', 
+                likes: 128
+            },
+            { id: '05', 
+                src: 'gbr/5.jpg', 
+                title: 'Gunung Penganggungan', 
+                desc: 'Gunung Penanggungan (sering disebut Gunung Pawitra) adalah gunung berapi kerucut setinggi 1.653 mdpl yang terletak di perbatasan Kabupaten Mojokerto dan Kabupaten Pasuruan, Jawa Timur. Terkenal sebagai "gunung suci" dan museum purbakala terbuka,', 
+                likes: 145
+            },
+            { id: '06', 
+                src: 'gbr/6.jpg', 
+                title: 'Mendaki Gunung', 
+                desc: 'Mendaki gunung adalah aktivitas luar ruangan yang memadukan olahraga dan rekreasi. Untuk mendaki dengan aman dan nyaman, utamakan persiapan fisik, bawa perlengkapan standar mendaki , pilih gunung yang sesuai kemampuan, serta selalu taati etika pendakian.', 
+                likes: 169
+            }, 
+            { id: '07', 
+                src: 'gbr/7.jpg', 
+                title: 'Gunung Kelud', 
+                desc: 'Gunung Kelud adalah gunung berapi aktif di Jawa Timur yang terletak di perbatasan Kabupaten Kediri, Blitar, dan Malang. Berdiri di ketinggian 1.731 mdpl, gunung ini sangat populer dengan wisata kawah eksotisnya dan memiliki catatan sejarah letusan yang dahsyat, termasuk erupsi terakhirnya pada tahun 2014.', 
+                likes: 123
+            },
+            { id: '08', 
+                src: 'gbr/8.jpg', 
+                title: 'Air Terjun Tumpak Sewu', 
+                desc: 'Air Terjun Tumpak Sewu-Indonesia atau disebut juga Coban Sewu adalah air terjun yang terletak di perbatasan Kabupaten Lumajang dengan Kabupaten Malang, Provinsi Jawa Timur. Air terjun dengan ketinggian sekitar 120 meter memiliki visual yang menyerupai tirai sehingga termasuk dalam tipe air terjun tiered. Aliran Tumpak Sewu jatuh masuk kedalam sebuah lembah yang memanjang ke selatan yang berada di ketinggian sekitar 450-500 mdpl.', 
+                likes: 111
+            },
+            { id: '09', 
+                src: 'gbr/9.jpg', 
+                title: 'Kawah Ijen', 
+                desc: 'Kawah Ijen di perbatasan Banyuwangi dan Bondowoso, Jawa Timur, adalah destinasi pendakian populer setinggi 2.386 mdpl, yang terkenal dengan fenomena langka blue fire (api biru) dan danau kawah asam hijau toska terbesar di dunia. Pendakian ini memakan waktu sekitar 2 jam.', 
+                likes: 143
+            },
+
+        ];
+
+        // Core variables
+        const count = photoData.length;
+        const angleStep = 360 / count;
+        
+        // System state variables
+        let ringMode = true; // true = 3D ring, false = stacked center
+        let currAngleY = 0;
+        let targetAngleY = 0;
+        let autoplayActive = true;
+        let currentOpenIndex = 0;
+        
+        // Slider defaults controlled dynamically
+        let currentTilt = -10;
+        let currentDistance = 280;
+
+        // Touch/Mouse Dragging memory
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let dragAngleSpeed = 0.15; // drag sensitivity
+
+        // DOM elements cache
+        const ring = document.getElementById('carousel-ring');
+        const sliderTilt = document.getElementById('slider-tilt');
+        const sliderDistance = document.getElementById('slider-distance');
+        const labelTilt = document.getElementById('label-tilt');
+        const labelDistance = document.getElementById('label-distance');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnRingMode = document.getElementById('btn-ring-mode');
+        const btnStackMode = document.getElementById('btn-stack-mode');
+        const btnAutoplay = document.getElementById('btn-autoplay');
+        const autoplayStatus = document.getElementById('autoplay-status');
+        const gestureHint = document.getElementById('gesture-hint');
+
+        // Lightbox element cache
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxContent = document.getElementById('lightbox-content');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+        const lightboxCategory = document.getElementById('lightbox-category');
+        const lightboxId = document.getElementById('lightbox-id');
+        const lightboxLoader = document.getElementById('lightbox-loader');
+        const closeLightboxBtn = document.getElementById('close-lightbox');
+        const bottomCloseBtn = document.getElementById('btn-lightbox-close');
+        
+        // Lightbox meta items
+        const metaCamera = document.getElementById('meta-camera');
+        const metaLens = document.getElementById('meta-lens');
+        const metaIso = document.getElementById('meta-iso');
+        const metaLoc = document.getElementById('meta-loc');
+        const btnLike = document.getElementById('btn-like');
+        const likeCounter = document.getElementById('like-counter');
+
+        // Initialize Carousel DOM cards
+        function initCarousel() {
+            ring.innerHTML = '';
+            
+            photoData.forEach((photo, i) => {
+                const card = document.createElement('div');
+                card.className = 'carousel-card glass-panel rounded-2xl neon-glow-cyan p-2.5 flex flex-col justify-between';
+                card.dataset.index = i;
+                
+                // Card Inner Structure
+                card.innerHTML = `
+                    <div class="relative w-full h-[78%] rounded-xl overflow-hidden bg-cosmic-950">
+                        <div class="absolute inset-0 bg-cosmic-800 animate-pulse"></div>
+                        <img src="${photo.src}" alt="${photo.title}" 
+                             class="absolute inset-0 w-full h-full object-cover relative z-10 transition-opacity duration-700 opacity-0"
+                             onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove()">
+                        <!-- Hover glow effects -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-cosmic-950/90 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-15 p-4 flex flex-col justify-end">
+                            <span class="text-[9px] uppercase tracking-wider text-cosmic-accent">${photo.category}</span>
+                            <h4 class="text-xs font-bold text-white truncate">${photo.title}</h4>
+                        </div>
+                    </div>
+                    <!-- Footer of individual card -->
+                    <div class="h-[20%] flex items-center justify-between px-1.5 pt-1.5">
+                        <div class="truncate mr-2">
+                            <span class="block text-[10px] font-mono text-cosmic-accent leading-none">0${i + 1} // ${photo.category}</span>
+                            <span class="block text-[11px] font-bold text-white truncate leading-normal mt-0.5">${photo.title}</span>
+                        </div>
+                        <div class="text-white/40 group-hover:text-cosmic-accent transition-colors flex items-center">
+                            <i class="ph-bold ph-magnifying-glass-plus text-sm"></i>
+                        </div>
+                    </div>
+                `;
+
+                // Single Card click behavior
+                card.addEventListener('click', (e) => {
+                    // Check if card is clicked without excessive dragging
+                    if (!isDragging) {
+                        openLightbox(i);
+                    }
+                });
+
+                ring.appendChild(card);
+            });
+
+            // Trigger explosive scatter animation from stack to ring format
+            setTimeout(() => {
+                applyCardTransforms();
+            }, 300);
+        }
+
+        // Apply spatial 3D placement math on individual card elements
+        function applyCardTransforms() {
+            const cards = document.querySelectorAll('.carousel-card');
+            
+            cards.forEach((card, i) => {
+                if (ringMode) {
+                    // Spread coordinates symmetrically inside a ring format
+                    const rotY = i * angleStep;
+                    card.style.transform = `rotateY(${rotY}deg) translateZ(${currentDistance}px)`;
+                    card.style.opacity = '1';
+                    card.style.pointerEvents = 'auto';
+                } else {
+                    // Pack all photos together at center overlapping flat (menjadi satu)
+                    card.style.transform = `rotateY(0deg) translateZ(${i * 6}px) rotateZ(${(i - 2.5) * 3}deg)`;
+                    card.style.opacity = i === 0 ? '1' : '0.85'; // Top card clear, lower cards slight fade
+                }
+            });
+            
+            updateCarouselFrame();
+        }
+
+        // Smooth physics interpolation loop for auto-rotation
+        function updateCarouselFrame() {
+            // Soft interpolation easing
+            currAngleY += (targetAngleY - currAngleY) * 0.15;
+            ring.style.transform = `rotateX(${currentTilt}deg) rotateY(${currAngleY}deg)`;
+        }
+
+        // Run perpetual game loop for autoplay
+        function runGameLoop() {
+            if (autoplayActive && !isDragging) {
+                targetAngleY -= 0.12; // slow rot speed
+                updateCarouselFrame();
+            } else {
+                updateCarouselFrame();
+            }
+            requestAnimationFrame(runGameLoop);
+        }
+
+        // Interaction Handlers (Mouse drag & Touch swipe)
+        function setupRotationGestures() {
+            
+            function handleStart(clientX) {
+                isDragging = true;
+                autoplayActive = false;
+                startX = clientX;
+                currentX = clientX;
+                
+                // Hide user guide on first user action
+                gestureHint.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => gestureHint.style.display = 'none', 500);
+            }
+
+            function handleMove(clientX) {
+                if (!isDragging) return;
+                currentX = clientX;
+                const deltaX = currentX - startX;
+                startX = currentX; // Track changes continuously
+                
+                // Map screen delta coordinates dynamically into rotational angles
+                targetAngleY += deltaX * dragAngleSpeed;
+            }
+
+            function handleEnd() {
+                isDragging = false;
+                // Resume autoplay if user has not disabled it explicitly
+                if (btnAutoplay.dataset.state !== 'disabled') {
+                    autoplayActive = true;
+                }
+            }
+
+            // Mouse Events mapping
+            window.addEventListener('mousedown', (e) => {
+                // Dragging only triggers if clicking inside the main viewport workspace
+                if (e.target.closest('.viewport-3d')) {
+                    handleStart(e.clientX);
+                }
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                handleMove(e.clientX);
+            });
+
+            window.addEventListener('mouseup', () => {
+                handleEnd();
+            });
+
+            // Touch Screen Events mapping (HP adaptive Support)
+            window.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.viewport-3d')) {
+                    handleStart(e.touches[0].clientX);
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                handleMove(e.touches[0].clientX);
+            }, { passive: true });
+
+            window.addEventListener('touchend', () => {
+                handleEnd();
+            });
+        }
+
+        // Sliders controls feedback mapping
+        sliderTilt.addEventListener('input', (e) => {
+            currentTilt = parseInt(e.target.value);
+            labelTilt.textContent = `${currentTilt}°`;
+        });
+
+        sliderDistance.addEventListener('input', (e) => {
+            currentDistance = parseInt(e.target.value);
+            labelDistance.textContent = `${currentDistance}px`;
+            applyCardTransforms();
+        });
+
+        // Navigation button events
+        btnPrev.addEventListener('click', () => {
+            targetAngleY += angleStep;
+            autoplayActive = false;
+        });
+
+        btnNext.addEventListener('click', () => {
+            targetAngleY -= angleStep;
+            autoplayActive = false;
+        });
+
+        // Layout presets manipulation
+        btnRingMode.addEventListener('click', () => {
+            ringMode = true;
+            btnRingMode.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-cosmic-500 text-white shadow transition-all duration-300';
+            btnStackMode.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-300/80 hover:text-white hover:bg-white/5 transition-all duration-300';
+            applyCardTransforms();
+        });
+
+        btnStackMode.addEventListener('click', () => {
+            ringMode = false;
+            btnStackMode.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-cosmic-500 text-white shadow transition-all duration-300';
+            btnRingMode.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-300/80 hover:text-white hover:bg-white/5 transition-all duration-300';
+            applyCardTransforms();
+        });
+
+        // Autoplay toggle element
+        btnAutoplay.addEventListener('click', () => {
+            if (autoplayActive) {
+                autoplayActive = false;
+                btnAutoplay.dataset.state = 'disabled';
+                btnAutoplay.classList.remove('text-cosmic-accent');
+                btnAutoplay.classList.add('text-white/40');
+                autoplayStatus.textContent = 'OFF';
+            } else {
+                autoplayActive = true;
+                btnAutoplay.dataset.state = 'enabled';
+                btnAutoplay.classList.add('text-cosmic-accent');
+                btnAutoplay.classList.remove('text-white/40');
+                autoplayStatus.textContent = 'ON';
+            }
+        });
+
+        // Pop-up Lightbox Logic (Pierce Screen Intro)
+        function openLightbox(index) {
+            currentOpenIndex = index;
+            const data = photoData[index];
+            
+            // Set dynamic metadata fields
+            lightboxTitle.textContent = data.title;
+            lightboxDesc.textContent = data.desc;
+            lightboxCategory.textContent = data.category;
+            lightboxId.textContent = `#${data.id}`;
+            metaCamera.textContent = data.camera;
+            metaLens.textContent = data.lens;
+            metaIso.textContent = data.iso;
+            metaLoc.textContent = data.loc;
+            likeCounter.textContent = data.likes;
+
+            // Reset liked button color state
+            btnLike.className = 'flex-1 py-3 px-4 rounded-xl bg-white/5 border border-white/10 hover:border-cosmic-neonPink/40 hover:bg-cosmic-neonPink/10 hover:text-cosmic-neonPink flex items-center justify-center gap-2 font-semibold transition-all duration-300';
+
+            // Show Loader and prep empty image element
+            lightboxLoader.classList.remove('opacity-0', 'pointer-events-none');
+            lightboxLoader.style.display = 'flex';
+            lightboxImg.classList.add('opacity-0');
+            
+            // Force block visibility on Lightbox overlay background
+            lightbox.classList.remove('pointer-events-none', 'opacity-0');
+            
+            // Kickstart 3D pierce scale and double rotation
+            lightboxContent.classList.remove('pierce-out');
+            void lightboxContent.offsetWidth; // Force CSS reset recalculation
+            lightboxContent.classList.add('pierce-in');
+            
+            // Background preloading to avoid texture glitches during transition
+            const bufferImg = new Image();
+            bufferImg.src = data.src;
+            bufferImg.onload = function() {
+                lightboxImg.src = this.src;
+                // Fade loader out and smooth-reveal full render
+                setTimeout(() => {
+                    lightboxLoader.classList.add('opacity-0');
+                    lightboxImg.classList.remove('opacity-0');
+                }, 300);
+            };
+        }
+
+        // Close 3D popup smoothly reversing the rotation
+        function closeLightbox() {
+            lightboxContent.classList.remove('pierce-in');
+            lightboxContent.classList.add('pierce-out');
+            
+            // Fade-out outer backdrop overlay frame
+            setTimeout(() => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+            }, 500);
+            
+            // Clear cache and reset states cleanly
+            setTimeout(() => {
+                lightboxImg.src = '';
+                lightboxImg.classList.add('opacity-0');
+            }, 600);
+        }
+
+        // Like Counter interactivity
+        btnLike.addEventListener('click', () => {
+            const currentLikes = photoData[currentOpenIndex].likes;
+            
+            if (btnLike.classList.contains('text-cosmic-neonPink')) {
+                // Unlike action
+                photoData[currentOpenIndex].likes = currentLikes - 1;
+                likeCounter.textContent = currentLikes - 1;
+                btnLike.classList.remove('text-cosmic-neonPink', 'bg-cosmic-neonPink/10', 'border-cosmic-neonPink/40');
+            } else {
+                // Like action with heart animation scale
+                photoData[currentOpenIndex].likes = currentLikes + 1;
+                likeCounter.textContent = currentLikes + 1;
+                btnLike.classList.add('text-cosmic-neonPink', 'bg-cosmic-neonPink/10', 'border-cosmic-neonPink/40');
+                
+                // Mini pulse effect on like button
+                btnLike.classList.add('scale-105');
+                setTimeout(() => btnLike.classList.remove('scale-105'), 200);
+            }
+        });
+
+        // Share button action simulation (Uses system clipboard)
+        document.getElementById('btn-share').addEventListener('click', () => {
+            const dummyUrl = window.location.href;
+            
+            // Support inside constrained environments using legacy execCommand
+            const dummyArea = document.createElement('textarea');
+            dummyArea.value = `Lihat foto keren ini: "${photoData[currentOpenIndex].title}" - ${photoData[currentOpenIndex].src}`;
+            document.body.appendChild(dummyArea);
+            dummyArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummyArea);
+
+            // Give feedback
+            const shareIcon = document.getElementById('btn-share').firstElementChild;
+            shareIcon.className = "ph-bold ph-check text-green-400";
+            setTimeout(() => {
+                shareIcon.className = "ph-bold ph-share-network text-lg";
+            }, 2000);
+        });
+
+        // Modal Close triggers setup
+        closeLightboxBtn.addEventListener('click', closeLightbox);
+        bottomCloseBtn.addEventListener('click', closeLightbox);
+        
+        // Background overlay clicks
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxContent) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation setup (Escape to dismiss, Arrows to rotate)
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('opacity-0')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            } else {
+                if (e.key === 'ArrowLeft') {
+                    targetAngleY += angleStep;
+                    autoplayActive = false;
+                }
+                if (e.key === 'ArrowRight') {
+                    targetAngleY -= angleStep;
+                    autoplayActive = false;
+                }
+            }
+        });
+
+        // Run application sequence on load completion
+        window.addEventListener('DOMContentLoaded', () => {
+            initCarousel();
+            setupRotationGestures();
+            runGameLoop();
+        });
+    </script>
+</body>
+</html>
+       
+
+        <!-- Wedding Gift Section -->
+        <section id="hadiah" class="py-24 px-4 bg-[#040c18] relative">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="reveal-element mb-16">
+                    <span class="text-xs tracking-[0.3em] text-yellow-500 uppercase font-bold">WEDDING GIFT</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-white font-extrabold mt-2">Kirim Kado / Angpao</h2>
+                    <p class="text-sm text-blue-200 mt-3 max-w-md mx-auto">Bagi keluarga dan sahabat yang ingin mengirimkan ucapan syukur dan kasih melalui hadiah digital, dapat melalui rekening berikut:</p>
+                </div>
+
+                <!-- Bank Card Layout (Grid for BRI and BNI) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+                    
+                    <!-- Bank BRI (Ranif) -->
+                    <div class="reveal-element bg-gradient-to-r from-[#0d2c54] to-[#081b33] border-2 border-yellow-600/30 rounded-3xl p-8 relative shadow-2xl flex flex-col justify-between overflow-hidden blue-glow">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-xl pointer-events-none"></div>
+                        
+                        <div>
+                            <div class="flex justify-between items-start mb-8">
+                                <div>
+                                    <p class="text-xl font-bold italic tracking-wide text-white flex items-center gap-1">
+                                        <span class="text-blue-400">BANK</span> BRI
+                                    </p>
+                                </div>
+                                <i class="fa-solid fa-wallet text-gold text-2xl"></i>
+                            </div>
+
+                            <div class="space-y-4 text-left">
+                                <p class="text-[11px] uppercase tracking-widest text-gray-400">Nomor Rekening</p>
+                                <div class="flex items-center justify-between bg-[#051122] rounded-xl px-4 py-3 border border-blue-900/60 gap-2">
+                                    <span id="accountNumber" class="text-base md:text-lg font-mono text-yellow-400 font-bold tracking-wider">201701027685507</span>
+                                    <button onclick="copyToClipboard('accountNumber', 'copyTextBRI', 'copyIconBRI')" class="text-xs font-semibold px-3.5 py-1.5 bg-yellow-600 hover:bg-yellow-500 text-white rounded-lg transition duration-200 flex items-center gap-1.5 shrink-0">
+                                        <i id="copyIconBRI" class="fa-solid fa-copy"></i>
+                                        <span id="copyTextBRI">Salin</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <p class="text-[11px] uppercase tracking-widest text-gray-400">Atas Nama</p>
+                                    <p class="text-base font-serif font-bold text-white tracking-wide mt-0.5">Muhammad Ranif</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank BNI (Riris) -->
+                    <div class="reveal-element bg-gradient-to-r from-[#0d2c54] to-[#081b33] border-2 border-yellow-600/30 rounded-3xl p-8 relative shadow-2xl flex flex-col justify-between overflow-hidden blue-glow">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-xl pointer-events-none"></div>
+                        
+                        <div>
+                            <div class="flex justify-between items-start mb-8">
+                                <div>
+                                    <p class="text-xl font-bold italic tracking-wide text-white flex items-center gap-1">
+                                        <span class="text-orange-400">BANK</span> BNI
+                                    </p>
+                                </div>
+                                <i class="fa-solid fa-credit-card text-gold text-2xl"></i>
+                            </div>
+
+                            <div class="space-y-4 text-left">
+                                <p class="text-[11px] uppercase tracking-widest text-gray-400">Nomor Rekening</p>
+                                <div class="flex items-center justify-between bg-[#051122] rounded-xl px-4 py-3 border border-blue-900/60 gap-2">
+                                    <span id="accountNumberBNI" class="text-base md:text-lg font-mono text-yellow-400 font-bold tracking-wider">1120535001</span>
+                                    <button onclick="copyToClipboard('accountNumberBNI', 'copyTextBNI', 'copyIconBNI')" class="text-xs font-semibold px-3.5 py-1.5 bg-yellow-600 hover:bg-yellow-500 text-white rounded-lg transition duration-200 flex items-center gap-1.5 shrink-0">
+                                        <i id="copyIconBNI" class="fa-solid fa-copy"></i>
+                                        <span id="copyTextBNI">Salin</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <p class="text-[11px] uppercase tracking-widest text-gray-400">Atas Nama</p>
+                                    <p class="text-base font-serif font-bold text-white tracking-wide mt-0.5">Prima Rizki Imami</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Custom notification toast -->
+                <div id="toastNotification" class="hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow-600 text-white text-xs px-6 py-2.5 rounded-full shadow-lg transition duration-300 z-50">
+                    Nomor rekening berhasil disalin!
+                </div>
+            </div>
+        </section>
+
+        <!-- Wishes & Guestbook Section -->
+        <section id="ucapan" class="py-24 px-4 bg-gradient-to-b from-[#040c18] to-[#0a192f]">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal-element text-center mb-16">
+                    <span class="text-xs tracking-[0.3em] text-yellow-500 uppercase font-bold">GUESTBOOK</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-white font-extrabold mt-2">Doa & Ucapan</h2>
+                    <p class="text-sm text-blue-200 mt-3 max-w-md mx-auto">Tinggalkan pesan cinta, restu, dan doa terbaik Anda di lembar digital ini untuk menyambut lembaran baru kehidupan kami.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                    <!-- Wish Submission Form -->
+                    <div class="reveal-element bg-[#081730] border border-blue-900/50 rounded-3xl p-6 md:p-8 shadow-xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-serif font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-pen-nib text-yellow-500"></i>
+                                Kirim Ucapan Anda
+                            </h3>
+                            <!-- AI Assist Badge -->
+                            <span class="text-[10px] bg-blue-900 border border-blue-700 text-yellow-400 px-2 py-0.5 rounded-full font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i> AI Powered
+                            </span>
+                        </div>
+                        
+                        <form id="wishForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div>
+                                <label for="senderNameInput" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                                <input type="text" id="senderNameInput" required class="w-full bg-[#051122] border border-blue-900/60 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 text-sm" placeholder="Masukkan nama Anda">
+                            </div>
+
+                            <div>
+                                <label for="attendanceInput" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Konfirmasi Kehadiran</label>
+                                <select id="attendanceInput" required class="w-full bg-[#051122] border border-blue-900/60 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 text-sm">
+                                    <option value="" disabled selected>Pilih Kehadiran</option>
+                                    <option value="Hadir">Saya akan hadir</option>
+                                    <option value="Tidak Hadir">Maaf, saya berhalangan hadir</option>
+                                    <option value="Masih Ragu">Belum pasti hadir</option>
+                                </select>
+                            </div>
+
+                            <div class="relative">
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="messageInput" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">Doa & Ucapan</label>
+                                    
+                                    <!-- AI Generator Button -->
+                                    <button type="button" onclick="toggleAIGeneratorPanel()" class="text-xs text-yellow-400 hover:text-yellow-300 flex items-center gap-1 transition focus:outline-none">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> Bantu Tulis Ucapan (AI)
+                                    </button>
+                                </div>
+                                
+                                <textarea id="messageInput" required rows="4" class="w-full bg-[#051122] border border-blue-900/60 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-yellow-500 text-sm resize-none" placeholder="Tuliskan ucapan dan doa terbaik Anda..."></textarea>
+                                
+                                <!-- AI Assistant Selection Box (Hidden by default) -->
+                                <div id="aiGeneratorPanel" class="hidden absolute top-0 left-0 right-0 bottom-0 bg-blue-950/95 border border-yellow-500/50 rounded-xl p-4 flex flex-col justify-between z-10">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-xs font-bold text-white">🪄 AI Ucapan Generator</span>
+                                            <button type="button" onclick="toggleAIGeneratorPanel()" class="text-gray-400 hover:text-white text-xs">Batal</button>
+                                        </div>
+                                        <p class="text-[10px] text-gray-300 mb-3">Pilih gaya bahasa yang Anda inginkan untuk ucapan spesial kepada Ranif & Riris:</p>
+                                        
+                                        <!-- Tone selections -->
+                                        <div class="grid grid-cols-3 gap-2">
+                                            <button type="button" onclick="generateAIWish('Formal Islami')" class="bg-blue-900/60 hover:bg-blue-800 border border-blue-700 text-white text-[10px] py-2 px-1.5 rounded-lg transition">
+                                                🕋 Islami Formal
+                                            </button>
+                                            <button type="button" onclick="generateAIWish('Romantis & Puitis')" class="bg-blue-900/60 hover:bg-blue-800 border border-blue-700 text-white text-[10px] py-2 px-1.5 rounded-lg transition">
+                                                ✍️ Puitis Romantis
+                                            </button>
+                                            <button type="button" onclick="generateAIWish('Patriotik Khas TNI AU')" class="bg-blue-900/60 hover:bg-blue-800 border border-blue-700 text-white text-[10px] py-2 px-1.5 rounded-lg transition">
+                                                ✈️ Dirgantara AU
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Generating State Indicator -->
+                                    <div id="aiGeneratingIndicator" class="hidden text-center py-2 text-xs text-yellow-400 animate-pulse">
+                                        <i class="fa-solid fa-spinner fa-spin mr-1"></i> Merajut kata-kata indah dengan AI...
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-yellow-600 to-amber-500 text-white font-bold rounded-xl shadow-lg hover:opacity-95 transition duration-200">
+                                Kirim Ucapan
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Wishes Display Feed -->
+                    <div class="reveal-element space-y-4">
+                        <h3 class="text-lg font-serif font-bold text-white mb-4 flex items-center justify-between">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-comments text-yellow-500"></i>
+                                Ucapan Sahabat & Keluarga
+                            </span>
+                            <span id="totalWishesCount" class="text-xs bg-blue-950 text-yellow-400 px-3 py-1 rounded-full border border-blue-900/50">3 Ucapan</span>
+                        </h3>
+
+                        <!-- Wishes container list -->
+                        <div id="wishesFeed" class="space-y-4 max-h-[420px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-blue-900">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Footer Section -->
+        <footer class="bg-[#020617] py-16 px-4 text-center border-t border-blue-950/80 relative">
+            <div class="absolute inset-0 border-4 border-double border-yellow-600/10 m-3 pointer-events-none rounded-2xl"></div>
+            
+            <div class="max-w-xl mx-auto space-y-6 relative z-10">
+                <div class="flex justify-center mb-6">
+                    <svg class="w-16 h-16 text-yellow-500/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L9 8h6l-3-6z" />
+                        <path d="M3 13h18l-9 4-9-4z" />
+                        <path d="M12 2l-7 11h14L12 2z" />
+                    </svg>
+                </div>
+
+                <p class="text-sm tracking-[0.2em] text-blue-200">TERIMA KASIH ATAS DOA DAN RESTUNYA</p>
+                
+                <h2 class="text-4xl font-serif font-bold text-white leading-snug">
+                    Ranif <span class="font-cursive text-gold">&</span> Riris
+                </h2>
+                
+                <p class="text-xs text-gray-400 max-w-sm mx-auto leading-relaxed">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila Bapak/Ibu/Saudara/i sekalian berkenan hadir dan memberikan doa restu kepada kami.
+                </p>
+
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest pt-6 border-t border-blue-950">
+                    SWA BUWANA PAKSA • KEMULIAAN DI UDARA
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Invitation Mechanics Logic script -->
+    <script>
+        // Custom Local Storage Key
+        const STORAGE_KEY = 'RANIF_RIRIS_WEDDING_WISHES_V1';
+
+        // Prepopulate Guestbook with some authentic template wishes
+        const templateWishes = [
+            {
+                name: "Letkol Heri Prasetyo (Kohanudnas)",
+                attendance: "Hadir",
+                message: "Selamat menempuh hidup baru Kapten Ranif & Riris. Semoga menjadi keluarga sakinah, mawaddah, warahmah. Setia hingga akhir hayat di darat, laut maupun dirgantara. Selamat bertugas mendampingi suami, mba Riris!",
+                timestamp: "2026-10-25T08:15:00.000Z"
+            },
+            {
+                name: "Sonia & Family",
+                attendance: "Hadir",
+                message: "Alhamdulillah Ririsku sayang akhirnya hari bahagia ini datang juga. Cantik sekali undangannya bernuansa TNI AU biru gagah. Semoga lancar acaranya akad dan resepsi lancar tanpa kendala apapun ya ris!",
+                timestamp: "2026-10-25T09:30:00.000Z"
+            },
+            {
+                name: "Kapten Udara Dani Ramadhan",
+                attendance: "Hadir",
+                message: "Dirgahayu Bahtera Rumah Tanggamu kawan. Swa Buwana Paksa! Senang melihat perjuanganmu berujung indah di pelaminan. Semoga berkah selalu pernikahan kalian.",
+                timestamp: "2026-10-25T10:05:00.000Z"
+            }
+        ];
+
+        // Core App state
+        let isMusicPlaying = false;
+        const targetWeddingDate = new Date("Oct 25, 2026 08:00:00 GMT+0700").getTime();
+
+        // Retrieve URL Parameter to personalize Recipient Name (Yth. [Name])
+        function getRecipientName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const toName = urlParams.get('to');
+            if (toName) {
+                document.getElementById('recipientName').innerText = decodeURIComponent(toName);
+            }
+        }
+
+        // Initialize Countdown timer
+        function initCountdown() {
+            const countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetWeddingDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("days").innerText = "00";
+                    document.getElementById("hours").innerText = "00";
+                    document.getElementById("minutes").innerText = "00";
+                    document.getElementById("seconds").innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Format leading zero
+                document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            }, 1000);
+        }
+
+        // Initialize Scroll-Triggered Pop-up effects (Intersection Observer)
+        function initScrollAnimations() {
+            const revealElements = document.querySelectorAll('.reveal-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.12, 
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Action when guest clicks "Buka Undangan"
+        function openInvitation() {
+            const cover = document.getElementById('coverScreen');
+            const main = document.getElementById('mainContent');
+            const audioBtn = document.getElementById('audioControl');
+            const aiWidgetBtn = document.getElementById('aiChatWidget');
+            
+            cover.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-100%]');
+            setTimeout(() => {
+                cover.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 1000);
+
+            // Display main container
+            main.classList.remove('hidden');
+            setTimeout(() => {
+                main.classList.add('opacity-100');
+            }, 50);
+
+            // Turn on Audio Playback automatically
+            audioBtn.classList.remove('hidden');
+            aiWidgetBtn.classList.remove('hidden');
+            playAudio();
+
+            // Setup scrolling element hooks
+            initScrollAnimations();
+        }
+
+        // Audio controls
+        function playAudio() {
+            const music = document.getElementById('bgMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            music.play().then(() => {
+                isMusicPlaying = true;
+                musicIcon.classList.add('animate-spin-slow');
+            }).catch(error => {
+                console.log("Audio playback failed because of autoplay guidelines: ", error);
+            });
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const musicIcon = document.getElementById('musicIcon');
+
+            if (isMusicPlaying) {
+                music.pause();
+                isMusicPlaying = false;
+                musicIcon.classList.remove('animate-spin-slow');
+            } else {
+                music.play();
+                isMusicPlaying = true;
+                musicIcon.classList.add('animate-spin-slow');
+            }
+        }
+
+        // Copy Bank Account Detail safely
+        function copyToClipboard(elementId, textBtnId, iconId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            const tempInput = document.createElement('input');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Trigger premium feedback animation
+            const toast = document.getElementById('toastNotification');
+            const btnText = document.getElementById(textBtnId);
+            const btnIcon = document.getElementById(iconId);
+
+            toast.classList.remove('hidden');
+            toast.classList.add('block', 'animate-pulse');
+            btnText.innerText = "Tersalin!";
+            btnIcon.className = "fa-solid fa-check";
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('block', 'animate-pulse');
+                btnText.innerText = "Salin";
+                btnIcon.className = "fa-solid fa-copy";
+            }, 3000);
+        }
+
+        /**
+         * core Gemini API helper using exponential backoff
+         */
+        async function fetchGeminiAI(prompt, systemInstructions) {
+            const apiKey = ""; // Canvas auto-injects if left blank
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemInstructions }]
+                }
+            };
+
+            let retryDelay = 1000;
+            for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        return result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, terjadi gangguan dalam merespon.";
+                    }
+                } catch (error) {
+                    console.warn(`Gemini API connection retry #${attempt + 1}...`);
+                }
+                await new Promise(resolve => setTimeout(resolve, retryDelay));
+                retryDelay *= 2; // Exponential backoff delay
+            }
+            throw new Error("Gagal terhubung dengan asisten AI.");
+        }
+
+        // Toggle the Wish Beautifier Panel
+        function toggleAIGeneratorPanel() {
+            const panel = document.getElementById('aiGeneratorPanel');
+            panel.classList.toggle('hidden');
+        }
+
+        // Generate automatic wedding wishes via Gemini API
+        async function generateAIWish(toneType) {
+            const messageInput = document.getElementById('messageInput');
+            const indicator = document.getElementById('aiGeneratingIndicator');
+            const senderName = document.getElementById('senderNameInput').value || "Sahabat";
+
+            indicator.classList.remove('hidden');
+
+            const systemPrompt = `Anda adalah asisten penulis undangan pernikahan digital premium. Tugas Anda adalah membuat ucapan doa pernikahan (wedding wishes) yang indah, puitis, dan penuh berkat dalam Bahasa Indonesia.
+Sebutkan nama kedua mempelai yaitu: "Ranif" (Muhammad Ranif, prajurit TNI Angkatan Udara/Dirgantara) dan "Riris" (Prima Rizki Imami). 
+Buat ucapan dengan panjang antara 2-3 kalimat yang sangat menyentuh hati dan bernilai estetika tinggi. Jangan gunakan kutipan teks placeholder atau penjelasan tambahan.`;
+
+            const promptText = `Tuliskan ucapan selamat pernikahan dan doa indah dari ${senderName} khusus untuk pernikahan Ranif & Riris dengan gaya bahasa: "${toneType}".`;
+
+            try {
+                const generatedText = await fetchGeminiAI(promptText, systemPrompt);
+                
+                // Set the generated text into the textarea and close panel
+                messageInput.value = generatedText.trim().replace(/^"|"$/g, '');
+                toggleAIGeneratorPanel();
+            } catch (err) {
+                console.error(err);
+                // Graceful error display without alerts
+                const errorBanner = document.createElement('div');
+                errorBanner.className = "bg-rose-950 border border-rose-500 text-rose-300 text-[10px] p-2 rounded mt-2 text-center";
+                errorBanner.innerText = "Koneksi AI sedang padat. Silakan coba mengetik ucapan Anda secara manual.";
+                document.getElementById('aiGeneratorPanel').appendChild(errorBanner);
+                setTimeout(() => errorBanner.remove(), 4000);
+            } finally {
+                indicator.classList.add('hidden');
+            }
+        }
+
+        // Toggle the Floating AI Chat Assistant UI
+        function toggleAIChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            chatWindow.classList.toggle('hidden');
+            if (!chatWindow.classList.contains('hidden')) {
+                document.getElementById('aiChatInput').focus();
+            }
+        }
+
+        // Handle Quick Chips
+        function sendQuickAIChat(text) {
+            document.getElementById('aiChatInput').value = text;
+            sendAIChat();
+        }
+
+        // Handle Enter keypress in chat input
+        function handleAIChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendAIChat();
+            }
+        }
+
+        // Send messages to Gemini in real time
+        async function sendAIChat() {
+            const inputField = document.getElementById('aiChatInput');
+            const query = inputField.value.trim();
+            if (!query) return;
+
+            const chatBody = document.getElementById('aiChatBody');
+
+            // Render User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = "bg-blue-900 border border-blue-800 p-2.5 rounded-xl max-w-[85%] self-end ml-auto text-white text-right";
+            userMsg.innerText = query;
+            chatBody.appendChild(userMsg);
+            
+            // Clear input
+            inputField.value = "";
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Render AI Loading State
+            const loadingMsg = document.createElement('div');
+            loadingMsg.className = "bg-blue-950/70 border border-blue-900/40 p-2.5 rounded-xl max-w-[85%] text-yellow-400 animate-pulse";
+            loadingMsg.innerHTML = `<i class="fa-solid fa-plane fa-spin mr-1"></i> Sedang merespon...`;
+            chatBody.appendChild(loadingMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Set up System instructions containing wedding metadata
+            const systemInstructions = `Anda adalah asisten virtual premium pernikahan "Dirgantara AI Companion" untuk pernikahan Muhammad Ranif (Ranif) dan Prima Rizki Imami (Riris). 
+Informasi penting pernikahan:
+- Mempelai Pria: Muhammad Ranif (Ranif), anak ke-1 dari Bapak Suherman & Ibu (Almh) Novita. Ranif adalah prajurit Dirgantara TNI AU (Angkatan Udara).
+- Mempelai Wanita: Prima Rizki Imami (Riris), anak ke-1 dari Bapak Latif & Ibu Mujiati.
+- Akad & Resepsi: Minggu, 25 Oktober 2026 pukul 08.00 WIB s/d selesai di kediaman mempelai wanita (Kediri).
+- Tema: TNI AU (Navy/Dirgantara Blue, Gold, Sky Blue).
+- Dress Code rekomendasi tamu: Biru Angkatan Udara, Biru Tua, Navy, Abu-abu, dengan aksen Emas/Kuning.
+- Kado Digital: Rekening BRI 201701027685507 a.n. Muhammad Ranif dan Rekening BNI 1120535001 a.n. Prima Rizki Imami.
+- Lokasi Maps: https://maps.app.goo.gl/TrYGVYo113xu8PE39?g_st=ac
+
+Gunakan nada bicara yang sopan, ramah, hangat, dan penuh rasa hormat (gunakan sapaan Kakak, Bapak, Ibu). Bantu tamu memberikan ucapan selamat yang luar biasa, merekomendasikan pakaian, atau mengarahkan mereka ke rute yang tepat. Jawablah secara padat (maksimal 3-4 kalimat).`;
+
+            try {
+                const responseText = await fetchGeminiAI(query, systemInstructions);
+                
+                // Remove Loading Indicator
+                loadingMsg.remove();
+
+                // Render AI Message
+                const aiMsg = document.createElement('div');
+                aiMsg.className = "bg-blue-950/70 border border-blue-900/40 p-3 rounded-xl max-w-[85%] text-gray-300";
+                aiMsg.innerHTML = responseText;
+                chatBody.appendChild(aiMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+            } catch (err) {
+                loadingMsg.remove();
+                const errorMsg = document.createElement('div');
+                errorMsg.className = "bg-rose-950/80 border border-rose-900 text-rose-300 p-2.5 rounded-xl max-w-[85%] text-xs";
+                errorMsg.innerText = "Maaf, sistem asisten AI sedang mengalami gangguan koneksi. Hubungi panitia untuk informasi mendesak.";
+                chatBody.appendChild(errorMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+
+        // Guestbook / Form Handling Mechanics
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const nameInput = document.getElementById('senderNameInput');
+            const attendanceInput = document.getElementById('attendanceInput');
+            const messageInput = document.getElementById('messageInput');
+
+            const newWish = {
+                name: nameInput.value,
+                attendance: attendanceInput.value,
+                message: messageInput.value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save to existing array in local storage
+            const currentWishes = getWishes();
+            currentWishes.unshift(newWish); // Push to the top of list
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(currentWishes));
+
+            // Reset Input Values
+            nameInput.value = '';
+            attendanceInput.value = '';
+            messageInput.value = '';
+
+            // Update UI rendering
+            renderWishes();
+        }
+
+        function getWishes() {
+            const data = localStorage.getItem(STORAGE_KEY);
+            if (!data) {
+                // Prepopulate with templates on first launch
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(templateWishes));
+                return templateWishes;
+            }
+            return JSON.parse(data);
+        }
+
+        function renderWishes() {
+            const wishes = getWishes();
+            const wishesFeed = document.getElementById('wishesFeed');
+            const totalCount = document.getElementById('totalWishesCount');
+            
+            wishesFeed.innerHTML = '';
+            totalCount.innerText = `${wishes.length} Ucapan`;
+
+            wishes.forEach(wish => {
+                const dateParsed = new Date(wish.timestamp);
+                const timeStr = dateParsed.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                // Attendance Badge Coloring Style
+                let attendanceBadgeClass = 'bg-emerald-950/80 text-emerald-400 border border-emerald-900/60';
+                if (wish.attendance === 'Tidak Hadir') {
+                    attendanceBadgeClass = 'bg-rose-950/80 text-rose-400 border border-rose-900/60';
+                } else if (wish.attendance === 'Masih Ragu') {
+                    attendanceBadgeClass = 'bg-amber-950/80 text-amber-400 border border-amber-900/60';
+                }
+
+                const wishCard = document.createElement('div');
+                wishCard.className = "p-4 bg-blue-950/40 border border-blue-900/40 rounded-2xl space-y-2 relative shadow-md";
+                wishCard.innerHTML = `
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <span class="font-serif font-bold text-white text-sm">${wish.name}</span>
+                        <span class="text-[10px] px-2.5 py-0.5 rounded-full font-semibold uppercase ${attendanceBadgeClass}">${wish.attendance}</span>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed font-light break-words">${wish.message}</p>
+                    <div class="text-[9px] text-gray-500 text-right">${timeStr}</div>
+                `;
+                wishesFeed.appendChild(wishCard);
+            });
+        }
+
+        // Document Initialization sequence on window load
+        window.onload = function() {
+            getRecipientName();
+            initCountdown();
+            renderWishes();
+        };
+    </script>
+</body>
+</html>
