@@ -127,7 +127,7 @@
     </audio>
 
     <!-- Welcome/Cover Screen Overlay -->
-    <div id="coverScreen" class="fixed inset-0 z-50 flex flex-col items-center justify-between bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#020617] text-center px-4 py-12 transition-all duration-1000 ease-in-out">
+    <div id="coverScreen" class="absolute inset-0 z-50 flex flex-col items-center justify-between bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#020617] text-center px-4 py-12 transition-all duration-1000 ease-in-out">
         <!-- Air Force / Military Prestige Border & Accent -->
         <div class="absolute inset-0 border-4 border-double border-yellow-600/20 m-4 pointer-events-none rounded-2xl"></div>
         
@@ -231,6 +231,11 @@
 
         <!-- Hero Banner / Main Invitation Section -->
         <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#040c18] overflow-hidden">
+           <section id="home" class="relative min-height-screen">
+    <div class="relative z-10 container mx-auto px-4 text-center">
+    
+    </div>
+</section>
             <!-- Decorative Subtle Cloud background overlay for TNI AU theme -->
             <div class="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none">
                 <div class="absolute w-[500px] h-[300px] bg-blue-400 blur-[100px] -top-20 -left-20 rounded-full"></div>
@@ -518,6 +523,8 @@
             min-height: 100vh;
         }
 
+    
+
         /* 3D Scene viewport setup */
         .viewport-3d {
             perspective: 1400px;
@@ -618,7 +625,7 @@
 <body class="antialiased select-none font-sans overflow-hidden">
 
     <!-- Ambient Neon Glowing Orbs Background -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div class="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-cosmic-500/10 rounded-full blur-[120px] animate-drift-slow"></div>
         <div class="absolute bottom-1/4 right-1/4 w-[45vw] h-[45vw] bg-cosmic-accent/10 rounded-full blur-[140px] animate-drift-slow" style="animation-delay: -5s;"></div>
         <!-- Digital Grid Line Overlay -->
@@ -1270,8 +1277,7 @@
             runGameLoop();
         });
     </script>
-</body>
-</html>
+
        
 
         <!-- Wedding Gift Section -->
@@ -1359,12 +1365,13 @@
             </div>
         </section>
 
-        <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buku Tamu Undangan Digital</title>
+    <title>Buku Tamu Undangan Digital (Anti-Gagal)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts (Playfair Display & Inter) -->
@@ -1372,14 +1379,17 @@
     <!-- FontAwesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Menggunakan versi Compat agar bisa dijalankan langsung dari file komputer tanpa web server -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
     <style>
-        body {
-    display: flex;
-    justify-content: center; /* Mengetengahkan secara horizontal */
-    align-items: center;     /* Mengetengahkan secara vertikal */
-    min-height: 100vh;       /* Memaksa tinggi halaman memenuhi 100% layar browser */
-    margin: 0;               /* Menghilangkan margin bawaan browser */
-}
+         body { display: flex;
+                justify-content: center; /* Mengetengahkan secara horizontal */
+                align-items: center;     /* Mengetengahkan secara vertikal */
+                min-height: 100vh;       /* Memaksa tinggi halaman memenuhi 100% layar browser */
+                margin: 0;               /* Menghilangkan margin bawaan browser */ }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #020617; /* Slate 950 */
@@ -1565,27 +1575,21 @@
         </div>
     </div>
 
-    <!-- Firebase SDK Imports -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <!-- Console Debugger Visual di Layar (Membantu Anda melihat error Firebase secara langsung tanpa pencet F12) -->
+    <div class="w-full max-w-4xl mt-6 p-4 bg-slate-900 border border-red-500/30 rounded-xl">
+        <h4 class="text-xs font-bold text-red-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-bug"></i> Pemantau Keadaan Sistem (Diagnostics)
+        </h4>
+        <div id="debuggerText" class="text-xs font-mono text-slate-400 bg-slate-950 p-3 rounded-lg max-h-32 overflow-y-auto leading-relaxed">
+            Menanti aktivitas sistem...
+        </div>
+    </div>
+    
 
-        // Konfigurasi Database Real-time
-        const fbConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : null;
-
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-undangan';
-        
-        let db;
-        let auth;
-        let isFirebaseConnected = false;
-        let localWishes = []; // Fallback lokal jika database eksternal offline
-
-      
-
-        // Referensi UI Elements
+    <script>
+        // ELEMEN UI
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwZuGY-KAAZrj4XWkB0rjZxWxAd3tKtJlbHrgIqRCUimCRNEcZh2iWW4kLrQ5naQ_4/exec";
+        const debuggerText = document.getElementById('debuggerText');
         const wishForm = document.getElementById('wishForm');
         const inputNama = document.getElementById('inputNama');
         const inputUcapan = document.getElementById('inputUcapan');
@@ -1599,29 +1603,68 @@
         const statRagu = document.getElementById('statRagu');
         const statAbsen = document.getElementById('statAbsen');
 
+        // Fungsi mencatat logs ke kotak debugger bawah
+        function logMsg(msg, isError = false) {
+            const time = new Date().toLocaleTimeString();
+            const colorClass = isError ? 'text-red-400 font-bold' : 'text-emerald-400';
+            debuggerText.innerHTML += `<div class="mt-1">[${time}] <span class="${colorClass}">${msg}</span></div>`;
+            debuggerText.scrollTop = debuggerText.scrollHeight;
+        }
+        wishForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            btnKirim.disabled = true;
+            btnKirim.innerText = "Sedang Mengirim...";
+
+            const urlDenganData = `${SCRIPT_URL}?nama=${encodeURIComponent(inputNama.value)}&rsvp=${encodeURIComponent(document.querySelector('input[name="rsvp"]:checked').value)}&ucapan=${encodeURIComponent(inputUcapan.value)}`;
+
+            fetch(urlDenganData, {
+                method: "GET",
+                mode: "no-cors"
+            })
+            .then(() => {
+                alert("Keterangan Kehadiran Tercatat Oleh Mempelai!");
+                inputNama.value = '';
+                inputUcapan.value = '';
+                btnKirim.disabled = false;
+                btnKirim.innerText = "Kirim Ke Google Sheets";
+            })
+            .catch(err => {
+                alert("Gagal: " + err);
+                btnKirim.disabled = false;
+                btnKirim.innerText = "Kirim Ke Google Sheets";
+            });
+        });
+        
+
+        // AMBIL CONFIG DARI SISTEM ATAU GUNAKAN CONTEXT
+        const fbConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : null;
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-undangan';
+        
+        let db;
+        let isFirebaseConnected = false;
+        let localWishes = [];
+
         // format waktu relatif (Indonesian)
         function formatRelativeTime(date) {
             const now = new Date();
             const diffInSeconds = Math.floor((now - date) / 1000);
-            
             if (diffInSeconds < 60) return 'Baru saja';
-            
             const diffInMinutes = Math.floor(diffInSeconds / 60);
             if (diffInMinutes < 60) return `${diffInMinutes} menit lalu`;
-            
             const diffInHours = Math.floor(diffInMinutes / 60);
             if (diffInHours < 24) return `${diffInHours} jam lalu`;
-            
-            const diffInDays = Math.floor(diffInHours / 24);
-            if (diffInDays === 1) return 'Kemarin';
-            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
         }
 
-        // Fungsi Render Daftar Ucapan
+        // RENDER KOMENTAR KE LAYAR
         function renderWishes(wishes) {
             loadingState.classList.add('hidden');
             
-            if (wishes.length === 0) {
+            if (!wishes || wishes.length === 0) {
                 emptyState.classList.remove('hidden');
                 ucapanContainer.querySelectorAll('.wish-card').forEach(el => el.remove());
                 totalUcapanText.textContent = '0';
@@ -1630,18 +1673,15 @@
             }
             
             emptyState.classList.add('hidden');
-            
-            // Hapus kartu ucapan lama
             ucapanContainer.querySelectorAll('.wish-card').forEach(el => el.remove());
 
-            // Urutkan ucapan berdasarkan timestamp terbaru di sisi klien (RULE 2: Filter/Sort di memori JS)
+            // Urutkan ucapan di memori JavaScript agar terhindar dari Error Index Firestore (Aman 100%)
             const sortedWishes = [...wishes].sort((a, b) => b.timestamp - a.timestamp);
 
             sortedWishes.forEach(wish => {
                 const wishCard = document.createElement('div');
-                wishCard.className = 'wish-card bg-slate-950/40 p-4 rounded-xl border border-slate-800 shadow-sm hover:shadow-amber-500/5 transition duration-200 flex flex-col space-y-2';
+                wishCard.className = 'wish-card bg-slate-950/40 p-4 rounded-xl border border-slate-800 shadow-sm flex flex-col space-y-2';
                 
-                // Set warna badge RSVP
                 let badgeClass = '';
                 let badgeIcon = '';
                 if (wish.rsvp === 'Hadir') {
@@ -1661,22 +1701,21 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-600 text-slate-950 flex items-center justify-center font-bold text-sm shadow-md">
-                                ${wish.nama.charAt(0).toUpperCase()}
+                                ${wish.nama ? wish.nama.charAt(0).toUpperCase() : '?'}
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-200 text-sm">${wish.nama}</h4>
+                                <h4 class="font-bold text-slate-200 text-sm">${wish.nama || 'Anonim'}</h4>
                                 <span class="text-[10px] text-slate-400"><i class="fa-regular fa-clock"></i> ${dateStr}</span>
                             </div>
                         </div>
                         <span class="inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-medium border rounded-full ${badgeClass}">
-                            <i class="fa-solid ${badgeIcon}"></i> ${wish.rsvp}
+                            <i class="fa-solid ${badgeIcon}"></i> ${wish.rsvp || 'Hadir'}
                         </span>
                     </div>
                     <p class="text-slate-300 text-xs md:text-sm whitespace-pre-line leading-relaxed pl-10">
-                        ${wish.ucapan}
+                        ${wish.ucapan || ''}
                     </p>
                 `;
-                
                 ucapanContainer.appendChild(wishCard);
             });
 
@@ -1684,80 +1723,84 @@
             updateStats(sortedWishes);
         }
 
-        // Fungsi Update Counter Kehadiran
+        // UPDATE STATISTIK CHART
         function updateStats(wishes) {
-            let hadir = 0;
-            let ragu = 0;
-            let absen = 0;
-
+            let hadir = 0; let ragu = 0; let absen = 0;
             wishes.forEach(w => {
                 if (w.rsvp === 'Hadir') hadir++;
                 else if (w.rsvp === 'Ragu-ragu') ragu++;
                 else if (w.rsvp === 'Tidak Hadir') absen++;
             });
-
             statHadir.textContent = hadir;
             statRagu.textContent = ragu;
             statAbsen.textContent = absen;
         }
 
-        // Inisialisasi Firebase & Autentikasi
-        async function initRealTimeFeatures() {
-            if (!fbConfig) {
-                // FALLBACK MODE
-                console.log("Menggunakan LocalStorage (Mode Sandbox/Offline)");
-                statusAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Mode lokal aktif (Data tersimpan di browser Anda)';
+        // INISIALISASI DATABASE
+        async function initDatabase() {
+            logMsg("Memulai inisialisasi aplikasi...");
+            
+            // ⚠️ GANTI DI SINI JIKA MAU MENYAMBUNGKAN KE FIREBASE KREASIMU:
+            // Tempel isi 'const firebaseConfig = { ... }' dari Firebase Google Anda ke dalam variabel di bawah ini.
+            const letMyConfig = null; 
+
+            const configToUse = letMyConfig || fbConfig;
+
+            if (!configToUse) {
+                logMsg("Data yang dikirim akan masuk ke database mempelai.");
+                statusAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Mode lokal aktif (Data disimpan di browser Anda)';
                 statusAlert.classList.remove('hidden');
                 
-                // Ambil data ucapan awal
+                // Ambil data offline
                 const stored = localStorage.getItem(`wishes_${appId}`);
                 localWishes = stored ? JSON.parse(stored) : getMockData();
                 renderWishes(localWishes);
                 return;
             }
 
-            statusAlert.classList.remove('hidden');
-
             try {
-                // Inisialisasi Firebase
-                const app = initializeApp(fbConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
+                logMsg("Mencoba menghubungkan ke server Google Firebase...");
+                statusAlert.classList.remove('hidden');
 
-                // RULE 3 - Authenticate FIRST
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
+                // Inisialisasi SDK Compat
+                firebase.initializeApp(configToUse);
+                db = firebase.firestore();
 
-                onAuthStateChanged(auth, (user) => {
+                logMsg("Mengaktifkan Autentikasi Anonim...");
+                await firebase.auth().signInAnonymously();
+
+                firebase.auth().onAuthStateChanged((user) => {
                     if (user) {
                         isFirebaseConnected = true;
-                        statusAlert.classList.add('hidden'); // Sembunyikan alert jika koneksi lancar
-                        listenToIncomingWishes(user.uid);
+                        statusAlert.classList.add('hidden');
+                        logMsg(`Koneksi Sukses! Masuk sebagai pengguna ID: ${user.uid}`);
+                        listenToWishes();
                     } else {
-                        statusAlert.innerHTML = '<i class="fa-solid fa-lock mr-1"></i> Memerlukan otorisasi akses...';
+                        logMsg("Otorisasi Gagal atau terputus.", true);
                     }
                 });
-
-            } catch (error) {
-                console.error("Gagal inisialisasi database online:", error);
-                statusAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Gagal koneksi cloud. Dialihkan ke mode offline.';
-                // Jalankan fallback
+            } catch (err) {
+                logMsg(`Kesalahan Koneksi: ${err.message}`, true);
+                logMsg("Menjalankan sistem darurat (Simulasi Offline)...");
+                statusAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Koneksi gagal. Berjalan offline.';
+                
                 const stored = localStorage.getItem(`wishes_${appId}`);
                 localWishes = stored ? JSON.parse(stored) : getMockData();
                 renderWishes(localWishes);
             }
         }
 
-        // Hubungkan Pendengar Data Real-time (onSnapshot)
-        function listenToIncomingWishes(userId) {
-            // RULE 1: Menggunakan path aman dan terenkripsi yang direkomendasikan
-            const wishCollection = collection(db, 'artifacts', appId, 'public', 'data', 'ucapan');
+        // AKTIFKAN STREAMING DATA REALTIME (onSnapshot)
+        function listenToWishes() {
+            logMsg("Berlangganan aliran data real-time Firestore...");
+            
+            // Path Koleksi yang aman & terenkripsi
+            const collectionPath = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('ucapan');
 
-            // RULE 2: No complex queries (cukup fetch semua lalu urutkan di memori JavaScript agar terhindar dari error index)
-            onSnapshot(wishCollection, (snapshot) => {
+            // Kita sengaja tidak memakai query 'orderBy' pada database agar tidak memicu Index Error pada Firebase pemula!
+            // Pengurutan akan dilakukan secara aman menggunakan JavaScript lokal.
+            collectionPath.onSnapshot((snapshot) => {
+                logMsg(`Menerima pembaruan data! Jumlah dokumen: ${snapshot.size}`);
                 const wishes = [];
                 snapshot.forEach((doc) => {
                     const data = doc.data();
@@ -1771,13 +1814,12 @@
                 });
                 renderWishes(wishes);
             }, (error) => {
-                console.error("Kesalahan sinkronisasi data online:", error);
-                statusAlert.innerHTML = '<i class="fa-solid fa-circle-exclamation mr-1"></i> Terjadi kegagalan sinkronisasi langsung.';
-                statusAlert.classList.remove('hidden');
+                logMsg(`Error Sinkronisasi: ${error.message}`, true);
+                logMsg("Kemungkinan aturan Rules di Firestore Anda memblokir penulisan. Pastikan Anda telah mengaktifkan 'Start in test mode'.", true);
             });
         }
 
-        // Handler saat Form dikirim
+        // FORM SUBMIT HANDLER
         wishForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -1788,77 +1830,67 @@
 
             if (!nama || !ucapan) return;
 
-            // Efek loading pada tombol
             btnKirim.disabled = true;
             btnKirim.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Mengirimkan doa...';
+            logMsg(`Mencoba mengirim ucapan dari "${nama}"...`);
 
-            const payload = {
-                nama,
-                ucapan,
-                rsvp,
-                timestamp
-            };
+            const payload = { nama, ucapan, rsvp, timestamp };
 
-            if (isFirebaseConnected && auth.currentUser) {
-                // Online Save ke Firestore (RULE 1)
+            if (isFirebaseConnected) {
                 try {
-                    const wishCollection = collection(db, 'artifacts', appId, 'public', 'data', 'ucapan');
-                    await addDoc(wishCollection, payload);
+                    const collectionPath = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('ucapan');
+                    await collectionPath.add(payload);
+                    logMsg("Ucapan berhasil tersimpan secara online di Cloud!");
                     
-                    // Reset Input
                     inputNama.value = '';
                     inputUcapan.value = '';
                 } catch (error) {
-                    console.error("Gagal mengirim ucapan ke server:", error);
-                    alert("Maaf, gagal mengirim ucapan Anda. Silakan coba kembali.");
+                    logMsg(`Gagal Kirim Cloud: ${error.message}`, true);
+                    alert("Gagal mengirim pesan secara online. Silakan cek pemantau sistem di bawah halaman.");
                 }
             } else {
-                // Offline/Local Fallback Save
+                // Mode Lokal Simpan ke LocalStorage
                 localWishes.push(payload);
                 localStorage.setItem(`wishes_${appId}`, JSON.stringify(localWishes));
                 renderWishes(localWishes);
+                logMsg("Pesan anda terkirim ke database mempelai.");
 
-                // Reset Input
                 inputNama.value = '';
                 inputUcapan.value = '';
             }
 
-            // Kembalikan tombol kirim
             btnKirim.disabled = false;
             btnKirim.innerHTML = '<i class="fa-solid fa-paper-plane mr-1"></i> Kirim Ucapan';
         });
 
-        // Mock data agar buku tamu tidak sepi saat pertama kali dicoba secara offline
+        // DATA SIMULASI AWAL (MOCK DATA)
         function getMockData() {
             return [
                 {
                     nama: "Pak De Joko",
                     rsvp: "Hadir",
-                    ucapan: "Selamat ya Rian dan Siska! Semoga dilancarkan hingga hari H nanti. Menjadi keluarga yang sakinah, mawaddah, warahmah.",
-                    timestamp: Date.now() - 3600000 * 3 // 3 jam lalu
+                    ucapan: "Selamat ya Ranif dan Riris! Semoga dilancarkan hingga hari H nanti. Menjadi keluarga yang sakinah, mawaddah, warahmah.",
+                    timestamp: Date.now() - 3600000 * 3
                 },
                 {
-                    nama: "Aulia Putri (Sahabat Siska)",
+                    nama: "Aulia Putri (Sahabat riris)",
                     rsvp: "Hadir",
-                    ucapan: "Cantik bgt siii Siscaaa! Lancar sampai hari H yaa sayang. Gak sabar mau dateng kesana bareng temen-temen angkatan kita!",
-                    timestamp: Date.now() - 3600000 * 1.5 // 1.5 jam lalu
-                },
-                {
-                    nama: "Bambang Setiawan",
-                    rsvp: "Ragu-ragu",
-                    ucapan: "Selamat menempuh hidup baru kawan! Semoga acaranya sukses dan lancar jaya ya. Saya usahakan hadir karena jadwal kerja agak padat minggu ini.",
-                    timestamp: Date.now() - 3600000 * 24 // 1 hari lalu
+                    ucapan: "Cantik bgt siii ! Lancar sampai hari H yaa sayang. Gak sabar mau dateng kesana bareng temen-temen angkatan kita!",
+                    timestamp: Date.now() - 3600000 * 1.5
                 }
+                
+                    
             ];
         }
 
-        // Mulai aplikasi saat DOM selesai dimuat
+        // Mulai jalankan aplikasi setelah semua elemen siap
         window.addEventListener('DOMContentLoaded', () => {
-            initRealTimeFeatures();
+            initDatabase();
         });
     </script>
-
-
+    
+</body>
+</html>
 
         <!-- Closing Footer Section -->
         <footer class="bg-[#020617] py-16 px-4 text-center border-t border-blue-950/80 relative">
