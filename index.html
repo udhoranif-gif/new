@@ -14,12 +14,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030712;
-            color: #f3f4f6;
-            overflow-x: hidden;
+
+    background-image: url('gbr/9.jpg'); /* Ganti dengan path gambar Anda */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: #f3f4f6;
+    overflow-x: hidden;
         }
+        
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
@@ -27,12 +35,8 @@
             font-family: 'Great Vibes', cursive;
         }
         /* Custom Blue and Gold Theme Colors representing TNI AU */
-        .bg-tniau-dark {
-            background-color: #0a192f;
-        }
-        .bg-tniau-blue {
-            background-color: #0d2c54;
-        }
+    
+    
         .text-gold {
             color: #d4af37;
         }
@@ -76,9 +80,13 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
+        /* Tambahkan ini di dalam <style> untuk menimpa warna biru */
+        .wish-card {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
     </style>
-</head>
-<body class="no-scroll">
 
         <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -119,7 +127,6 @@
         });
     </script>
 </body>
-</html>
 
     <!-- Background Music Audio -->
     <audio id="bgMusic" loop>
@@ -127,9 +134,12 @@
     </audio>
 
     <!-- Welcome/Cover Screen Overlay -->
-    <div id="coverScreen" class="absolute inset-0 z-50 flex flex-col items-center justify-between bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#020617] text-center px-4 py-12 transition-all duration-1000 ease-in-out">
+     <div class="fixed inset-0 z-[-1]">
+    <img src="GBR/2.jpg" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/60"></div> </div>
+    <div id="coverScreen" class="absolute inset-0 z-50 flex flex-col items-center justify-between bg-black/20 text-center px-4 py-12 transition-all duration-1000 ease-in-out">
         <!-- Air Force / Military Prestige Border & Accent -->
-        <div class="absolute inset-0 border-4 border-double border-yellow-600/20 m-4 pointer-events-none rounded-2xl"></div>
+        <div class="absolute inset-0 border-4 border-yellow-600/20 m-4 pointer-events-none rounded-2xl"></div>
         
 
         <div class="my-auto space-y-6">
@@ -139,7 +149,7 @@
             </h1>
             <p class="text-xs md:text-sm tracking-[0.2em] text-gray-300">Minggu, 25 Oktober 2026</p>
             
-            <div class="max-w-sm mx-auto bg-blue-950/40 border border-blue-900/50 backdrop-blur-md rounded-xl p-4 mt-6">
+            <div class="max-w-sm mx-auto bg-white/20 border border-blue-900/50 backdrop-blur-md rounded-xl p-4 mt-6">
                 <p class="text-[11px] text-gray-400 uppercase tracking-widest mb-1">Kepada Yth. Bapak/Ibu/Saudara/i</p>
                 <p class="text-lg font-serif font-bold text-yellow-400" id="recipientName">Tamu Undangan Spesial</p>
             </div>
@@ -196,7 +206,7 @@
 
             <!-- Chat Messages Area -->
             <div id="aiChatBody" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-relaxed">
-                <div class="bg-blue-950/70 border border-blue-900/40 p-3 rounded-xl max-w-[85%] text-gray-300">
+                <div class="bg-white/20 border border-white/20 p-3 rounded-xl max-w-[85%] text-gray-300">
                     Halo! Saya <strong>Asisten AI Dirgantara</strong>. Saya siap membantu Anda seputar persiapan kehadiran di pernikahan <strong>Ranif & Riris</strong>.
                     <br><br>
                     Anda bisa tanyakan apa saja, seperti:
@@ -230,22 +240,22 @@
     <div id="mainContent" class="hidden opacity-0 transition-opacity duration-1000">
 
         <!-- Hero Banner / Main Invitation Section -->
-        <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 bg-gradient-to-b from-[#0a192f] via-[#0d2c54] to-[#040c18] overflow-hidden">
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center px-4 bg-black/10 overflow-hidden">
            <section id="home" class="relative min-height-screen">
     <div class="relative z-10 container mx-auto px-4 text-center">
     
     </div>
 </section>
             <!-- Decorative Subtle Cloud background overlay for TNI AU theme -->
-            <div class="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none">
-                <div class="absolute w-[500px] h-[300px] bg-blue-400 blur-[100px] -top-20 -left-20 rounded-full"></div>
-                <div class="absolute w-[600px] h-[400px] bg-sky-300 blur-[120px] bottom-10 right-10 rounded-full"></div>
+            <div class="fixed inset-0 opacity-10 mix-blend-overlay pointer-events-none">
+                <div class="absolute w-[500px] h-[300px] bg-black/20 blur-[100px] -top-20 -left-20 rounded-full"></div>
+                <div class="absolute w-[600px] h-[400px] bg-black/20 blur-[120px] bottom-10 right-10 rounded-full"></div>
             </div>
             
             <div class="relative z-10 space-y-8 py-20 max-w-4xl mx-auto">
                 <div class="reveal-element active">
                     <p class="text-xs md:text-sm tracking-[0.4em] text-yellow-400 uppercase font-bold">THE WEDDING OF</p>
-                    <div class="w-24 h-[1px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto my-3"></div>
+                    <div class="w-24 h-[1px] bg-black/20 via-yellow-400 to-transparent mx-auto my-3"></div>
                 </div>
 
                 <h2 class="reveal-element active text-5xl md:text-8xl font-serif text-white font-extrabold leading-none drop-shadow-md">
@@ -277,7 +287,10 @@
         </section>
 
         <!-- Quranic Verse (Surat Ar-Rum 21) -->
-        <section class="py-20 px-4 bg-[#040c18] text-center relative border-t border-b border-blue-950">
+        <section class="py-20 px-4 bg-black/20 text-center relative border-t border-b border-blue-950">
+            <p class="text-xs md:text-sm tracking-[0.3em] text-yellow-400 uppercase font-bold">Tanda-Tanda (Kebesaran Allah)
+                
+            </p>
             <div class="max-w-3xl mx-auto space-y-6 bg-[#0a192f]/50 border border-blue-900/40 p-8 rounded-3xl relative">
                 <!-- Military Golden Wing background crest outline subtle -->
                 <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
@@ -300,8 +313,8 @@
         </section>
 
         <!-- Bride and Groom Section (Mempelai) -->
-        <section id="mempelai" class="py-24 px-4 bg-gradient-to-b from-[#040c18] to-[#0a192f] text-center">
-            <div class="max-w-6xl mx-auto">
+        <section id="mempelai" class="text-center">
+            <div class="bg-black/15 border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/100 transition duration-500 shadow-xl group">
                 <div class="reveal-element mb-16">
                     <span class="text-xs tracking-[0.3em] text-yellow-500 uppercase font-bold">MEMPELAI</span>
                     <h2 class="text-3xl md:text-5xl font-serif text-white font-extrabold mt-2">Dua Hati Satu Jiwa</h2>
@@ -312,16 +325,16 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start mt-12">
                     
                     <!-- Groom (Muhammad Ranif - TNI AU Theme Card) -->
-                    <div class="reveal-element bg-[#081730] border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/50 transition duration-500 shadow-xl group">
+                    <div class="bg-black/30 border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/100 transition duration-500 shadow-xl group">
                         <!-- TNI AU Ribbon Design element -->
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-700 to-yellow-600 text-white text-[11px] font-bold tracking-widest px-6 py-1 rounded-full uppercase shadow">
-                            PRAJURIT DIRGANTARA
+                            MEMPELAI PRIA
                         </div>
                         
                         <div class="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-yellow-500 flex items-center justify-center bg-blue-950 shadow-inner mt-4 group-hover:scale-105 transition duration-500 relative">
                             <!-- TNI AU silhouette wings background -->
-                            <i class="fa-solid fa-plane-up text-blue-700/20 text-[80px] absolute"></i>
-                            <div class="text-5xl text-gold font-cursive z-10">R</div>
+                            <img src="GBR/6.jpg" alt="Muhammad Ranif" class="inset-0 w-full h-full object-cover">
+                
                         </div>
 
                         <h3 class="text-2xl font-serif font-bold text-white mt-6">Muhammad Ranif</h3>
@@ -338,16 +351,15 @@
                     </div>
 
                     <!-- Bride (Prima Rizki Imami) -->
-                    <div class="reveal-element bg-[#081730] border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/50 transition duration-500 shadow-xl group">
+                    <div class="bg-black/30 border border-blue-900/50 rounded-3xl p-8 relative hover:border-yellow-600/100 transition duration-500 shadow-xl group">
                         <!-- Elegant Gold Lace element -->
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-600 to-amber-500 text-white text-[11px] font-bold tracking-widest px-6 py-1 rounded-full uppercase shadow">
-                            PUTRI ANGGUN
+                            MEMPELAI WANITA
                         </div>
 
                         <!-- Bride Avatar -->
                         <div class="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-yellow-500 flex items-center justify-center bg-blue-950 shadow-inner mt-4 group-hover:scale-105 transition duration-500 relative">
-                            <i class="fa-solid fa-leaf text-yellow-600/20 text-[80px] absolute"></i>
-                            <div class="text-5xl text-gold font-cursive z-10">R</div>
+                            <img src="GBR/7.jpg" alt="Prima Rizki Imami" class="inset-0 w-full h-full object-cover">
                         </div>
 
                         <h3 class="text-2xl font-serif font-bold text-white mt-6">Prima Rizki Imami</h3>
@@ -368,8 +380,8 @@
         </section>
 
         <!-- Event Details Section (Akad & Resepsi) -->
-        <section id="acara" class="py-24 px-4 bg-[#040c18] relative">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.08)_0%,_transparent_70%)] pointer-events-none"></div>
+        <section id="acara" class="py-24 px-4 bg-black/20 relative">
+            <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
             
             <div class="max-w-5xl mx-auto relative z-10 text-center">
                 <div class="reveal-element mb-16">
@@ -398,11 +410,11 @@
                                 </div>
                                 <div class="flex items-center justify-center gap-3">
                                     <i class="fa-regular fa-clock text-yellow-400"></i>
-                                    <span>08.00 WIB s/d Selesai</span>
+                                    <span>08.00 WIB s/d 09.00 WIB</span>
                                 </div>
                                 <div class="flex items-center justify-center gap-3 items-start">
                                     <i class="fa-solid fa-location-dot text-yellow-400 mt-1"></i>
-                                    <span class="max-w-xs text-center">Kediaman Mempelai Wanita (Kediri)</span>
+                                    <span class="max-w-xs text-center">Kediaman Mempelai Wanita (Krian)</span>
                                 </div>
                             </div>
                         </div>
@@ -426,11 +438,11 @@
                                 </div>
                                 <div class="flex items-center justify-center gap-3">
                                     <i class="fa-regular fa-clock text-yellow-400"></i>
-                                    <span>08.00 WIB s/d Selesai</span>
+                                    <span>09.00 WIB s/d Selesai</span>
                                 </div>
                                 <div class="flex items-center justify-center gap-3 items-start">
                                     <i class="fa-solid fa-location-dot text-yellow-400 mt-1"></i>
-                                    <span class="max-w-xs text-center">Kediaman Mempelai Wanita (Kediri)</span>
+                                    <span class="max-w-xs text-center">Kediaman Mempelai Wanita (Krian)</span>
                                 </div>
                             </div>
                         </div>
@@ -456,9 +468,6 @@
             </div>
         </section>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Cosmos 3D Ring Gallery</title>
@@ -621,8 +630,6 @@
             }
         }
     </style>
-</head>
-<body class="antialiased select-none font-sans overflow-hidden">
 
     <!-- Ambient Neon Glowing Orbs Background -->
     <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -1281,7 +1288,7 @@
        
 
         <!-- Wedding Gift Section -->
-        <section id="hadiah" class="py-24 px-4 bg-[#040c18] relative">
+        <section id="hadiah" class="py-24 px-4 bg-black/20 relative">
             <div class="max-w-5xl mx-auto text-center relative z-10">
                 <div class="reveal-element mb-16">
                     <span class="text-xs tracking-[0.3em] text-yellow-500 uppercase font-bold">WEDDING GIFT</span>
@@ -1366,9 +1373,6 @@
         </section>
 
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buku Tamu Undangan Digital (Anti-Gagal)</title>
@@ -1413,9 +1417,7 @@
             background: #f59e0b; /* Amber 500 */
         }
     </style>
-</head>
-<body class="min-h-screen flex flex-col items-center justify-start bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 py-8 px-4 md:px-8">
-
+    
     <!-- Kontainer Utama -->
     <div class="w-full max-w-4xl bg-slate-900/90 backdrop-blur-md rounded-2xl shadow-2xl border border-amber-500/20 overflow-hidden">
         
@@ -1564,6 +1566,7 @@
                     </div>
                     
                     <!-- Ucapan-ucapan akan dimasukkan ke sini oleh JS -->
+
                 </div>
             </div>
 
@@ -1571,25 +1574,18 @@
 
         <!-- Footer -->
         <div class="bg-slate-950 py-4 text-center text-xs text-slate-500 border-t border-slate-800/80">
-            Dibuat penuh kasih &copy; 2026 Rian & Siska • Fitur Real-time Aktif
+            Dibuat penuh kasih &copy; 2026 Ranif & Riris • Fitur Real-time Aktif
         </div>
     </div>
 
     <!-- Console Debugger Visual di Layar (Membantu Anda melihat error Firebase secara langsung tanpa pencet F12) -->
-    <div class="w-full max-w-4xl mt-6 p-4 bg-slate-900 border border-red-500/30 rounded-xl">
-        <h4 class="text-xs font-bold text-red-400 uppercase tracking-wider mb-2 flex items-center gap-2">
-            <i class="fa-solid fa-bug"></i> Pemantau Keadaan Sistem (Diagnostics)
-        </h4>
-        <div id="debuggerText" class="text-xs font-mono text-slate-400 bg-slate-950 p-3 rounded-lg max-h-32 overflow-y-auto leading-relaxed">
-            Menanti aktivitas sistem...
-        </div>
-    </div>
     
-
     <script>
-        // ELEMEN UI
+        // --- KONFIGURASI ---
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwZuGY-KAAZrj4XWkB0rjZxWxAd3tKtJlbHrgIqRCUimCRNEcZh2iWW4kLrQ5naQ_4/exec";
-        const debuggerText = document.getElementById('debuggerText');
+        const APP_ID = "undangan-ranif-riris";
+        
+        // --- ELEMEN UI ---
         const wishForm = document.getElementById('wishForm');
         const inputNama = document.getElementById('inputNama');
         const inputUcapan = document.getElementById('inputUcapan');
@@ -1597,90 +1593,68 @@
         const ucapanContainer = document.getElementById('ucapanContainer');
         const loadingState = document.getElementById('loadingState');
         const emptyState = document.getElementById('emptyState');
-        const statusAlert = document.getElementById('statusAlert');
+        
         const totalUcapanText = document.getElementById('totalUcapan');
         const statHadir = document.getElementById('statHadir');
         const statRagu = document.getElementById('statRagu');
         const statAbsen = document.getElementById('statAbsen');
 
-        // Fungsi mencatat logs ke kotak debugger bawah
-        function logMsg(msg, isError = false) {
-            const time = new Date().toLocaleTimeString();
-            const colorClass = isError ? 'text-red-400 font-bold' : 'text-emerald-400';
-            debuggerText.innerHTML += `<div class="mt-1">[${time}] <span class="${colorClass}">${msg}</span></div>`;
-            debuggerText.scrollTop = debuggerText.scrollHeight;
-        }
-        wishForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            btnKirim.disabled = true;
-            btnKirim.innerText = "Sedang Mengirim...";
-
-            const urlDenganData = `${SCRIPT_URL}?nama=${encodeURIComponent(inputNama.value)}&rsvp=${encodeURIComponent(document.querySelector('input[name="rsvp"]:checked').value)}&ucapan=${encodeURIComponent(inputUcapan.value)}`;
-
-            fetch(urlDenganData, {
-                method: "GET",
-                mode: "no-cors"
-            })
-            .then(() => {
-                alert("Keterangan Kehadiran Tercatat Oleh Mempelai!");
-                inputNama.value = '';
-                inputUcapan.value = '';
-                btnKirim.disabled = false;
-                btnKirim.innerText = "Kirim Ke Google Sheets";
-            })
-            .catch(err => {
-                alert("Gagal: " + err);
-                btnKirim.disabled = false;
-                btnKirim.innerText = "Kirim Ke Google Sheets";
-            });
-        });
-        
-
-        // AMBIL CONFIG DARI SISTEM ATAU GUNAKAN CONTEXT
-        const fbConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : null;
-
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-undangan';
-        
-        let db;
-        let isFirebaseConnected = false;
+        // State Penyimpanan Lokal
         let localWishes = [];
 
-        // format waktu relatif (Indonesian)
-        function formatRelativeTime(date) {
+        // --- FUNGSI FORMAT WAKTU ---
+        function formatRelativeTime(timestamp) {
+            const date = new Date(timestamp);
             const now = new Date();
             const diffInSeconds = Math.floor((now - date) / 1000);
+            
             if (diffInSeconds < 60) return 'Baru saja';
             const diffInMinutes = Math.floor(diffInSeconds / 60);
             if (diffInMinutes < 60) return `${diffInMinutes} menit lalu`;
             const diffInHours = Math.floor(diffInMinutes / 60);
             if (diffInHours < 24) return `${diffInHours} jam lalu`;
-            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+            
+            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
         }
 
-        // RENDER KOMENTAR KE LAYAR
+        // --- FUNGSI UPDATE STATISTIK ---
+        function updateStats(wishes) {
+            let hadir = 0, ragu = 0, absen = 0;
+            wishes.forEach(w => {
+                if (w.rsvp === 'Hadir') hadir++;
+                else if (w.rsvp === 'Ragu-ragu') ragu++;
+                else if (w.rsvp === 'Tidak Hadir') absen++;
+            });
+            statHadir.textContent = hadir;
+            statRagu.textContent = ragu;
+            statAbsen.textContent = absen;
+            totalUcapanText.textContent = wishes.length;
+        }
+
+        // --- FUNGSI TAMPILKAN UCAPAN (RENDER) ---
         function renderWishes(wishes) {
-            loadingState.classList.add('hidden');
+            // Sembunyikan loading
+            if(loadingState) loadingState.classList.add('hidden');
             
+            // Bersihkan container dari ucapan lama (kecuali loading & empty state)
+            const existingCards = ucapanContainer.querySelectorAll('.wish-card');
+            existingCards.forEach(el => el.remove());
+
             if (!wishes || wishes.length === 0) {
-                emptyState.classList.remove('hidden');
-                ucapanContainer.querySelectorAll('.wish-card').forEach(el => el.remove());
-                totalUcapanText.textContent = '0';
+                if(emptyState) emptyState.classList.remove('hidden');
                 updateStats([]);
                 return;
             }
             
-            emptyState.classList.add('hidden');
-            ucapanContainer.querySelectorAll('.wish-card').forEach(el => el.remove());
+            if(emptyState) emptyState.classList.add('hidden');
 
-            // Urutkan ucapan di memori JavaScript agar terhindar dari Error Index Firestore (Aman 100%)
+            // Urutkan dari yang terbaru
             const sortedWishes = [...wishes].sort((a, b) => b.timestamp - a.timestamp);
 
             sortedWishes.forEach(wish => {
                 const wishCard = document.createElement('div');
-                wishCard.className = 'wish-card bg-slate-950/40 p-4 rounded-xl border border-slate-800 shadow-sm flex flex-col space-y-2';
+                // Ganti baris wishCard.className menjadi ini:
+wishCard.className = "p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl space-y-2 relative shadow-lg !bg-opacity-10";
                 
                 let badgeClass = '';
                 let badgeIcon = '';
@@ -1695,13 +1669,14 @@
                     badgeIcon = 'fa-circle-xmark';
                 }
 
-                const dateStr = wish.timestamp ? formatRelativeTime(new Date(wish.timestamp)) : 'Baru saja';
+                const dateStr = wish.timestamp ? formatRelativeTime(wish.timestamp) : 'Baru saja';
+                const initial = wish.nama ? wish.nama.charAt(0).toUpperCase() : '?';
 
                 wishCard.innerHTML = `
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-600 text-slate-950 flex items-center justify-center font-bold text-sm shadow-md">
-                                ${wish.nama ? wish.nama.charAt(0).toUpperCase() : '?'}
+                                ${initial}
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-200 text-sm">${wish.nama || 'Anonim'}</h4>
@@ -1719,181 +1694,167 @@
                 ucapanContainer.appendChild(wishCard);
             });
 
-            totalUcapanText.textContent = sortedWishes.length;
             updateStats(sortedWishes);
         }
 
-        // UPDATE STATISTIK CHART
-        function updateStats(wishes) {
-            let hadir = 0; let ragu = 0; let absen = 0;
-            wishes.forEach(w => {
-                if (w.rsvp === 'Hadir') hadir++;
-                else if (w.rsvp === 'Ragu-ragu') ragu++;
-                else if (w.rsvp === 'Tidak Hadir') absen++;
-            });
-            statHadir.textContent = hadir;
-            statRagu.textContent = ragu;
-            statAbsen.textContent = absen;
-        }
-
-        // INISIALISASI DATABASE
-        async function initDatabase() {
-            logMsg("Memulai inisialisasi aplikasi...");
-            
-            // ⚠️ GANTI DI SINI JIKA MAU MENYAMBUNGKAN KE FIREBASE KREASIMU:
-            // Tempel isi 'const firebaseConfig = { ... }' dari Firebase Google Anda ke dalam variabel di bawah ini.
-            const letMyConfig = null; 
-
-            const configToUse = letMyConfig || fbConfig;
-
-            if (!configToUse) {
-                logMsg("Data yang dikirim akan masuk ke database mempelai.");
-                statusAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Mode lokal aktif (Data disimpan di browser Anda)';
-                statusAlert.classList.remove('hidden');
-                
-                // Ambil data offline
-                const stored = localStorage.getItem(`wishes_${appId}`);
-                localWishes = stored ? JSON.parse(stored) : getMockData();
-                renderWishes(localWishes);
-                return;
-            }
-
+        // --- MENGAMBIL DATA SAAT HALAMAN DIBUKA ---
+      // --- MENGAMBIL DATA SAAT HALAMAN DIBUKA (VERSI ANTI-GAGAL) ---
+        function loadInitialWishes() {
             try {
-                logMsg("Mencoba menghubungkan ke server Google Firebase...");
-                statusAlert.classList.remove('hidden');
-
-                // Inisialisasi SDK Compat
-                firebase.initializeApp(configToUse);
-                db = firebase.firestore();
-
-                logMsg("Mengaktifkan Autentikasi Anonim...");
-                await firebase.auth().signInAnonymously();
-
-                firebase.auth().onAuthStateChanged((user) => {
-                    if (user) {
-                        isFirebaseConnected = true;
-                        statusAlert.classList.add('hidden');
-                        logMsg(`Koneksi Sukses! Masuk sebagai pengguna ID: ${user.uid}`);
-                        listenToWishes();
-                    } else {
-                        logMsg("Otorisasi Gagal atau terputus.", true);
-                    }
-                });
-            } catch (err) {
-                logMsg(`Kesalahan Koneksi: ${err.message}`, true);
-                logMsg("Menjalankan sistem darurat (Simulasi Offline)...");
-                statusAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Koneksi gagal. Berjalan offline.';
+                let stored = localStorage.getItem(`wishes_${APP_ID}`);
                 
-                const stored = localStorage.getItem(`wishes_${appId}`);
-                localWishes = stored ? JSON.parse(stored) : getMockData();
+                // Cek apakah data tersimpan rusak atau berwujud string kosong "[]"
+                if (stored === "[]" || stored === null) {
+                    stored = null; // Paksa jadi null agar diganti data simulasi
+                }
+
+                if (stored) {
+                    localWishes = JSON.parse(stored);
+                } else {
+                    // Data simulasi awal yang DIJAMIN muncul
+                    localWishes = [
+                        { 
+                            nama: "Sonia & Family", 
+                            rsvp: "Hadir", 
+                            ucapan: "Alhamdulillah Ririsku sayang! Semoga lancar acaranya akad dan resepsi.", 
+                            timestamp: Date.now() - 3600000 * 2 
+                        },
+                        { 
+                            nama: "Sahabat Lama", 
+                            rsvp: "Hadir", 
+                            ucapan: "Lancar sampai hari H ya kawan!", 
+                            timestamp: Date.now() - 3600000 * 8 
+                        },
+                        { 
+                            nama: "DHONI P", 
+                            rsvp: "Hadir", 
+                            ucapan: "Selamat ya bang", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "Pak Andar S", 
+                            rsvp: "Hadir", 
+                            ucapan: "Selamat menempuh hidup baru, semoga menjadi keluarga yang sakinah, mawaddah, warahmah.", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "anonim", 
+                            rsvp: "ragu-ragu", 
+                            ucapan: "mantapppp", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "bastian", 
+                            rsvp: "Hadir", 
+                            ucapan: "lancar yaaa kawan bulutangkis", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "mayang sari wulandari", 
+                            rsvp: "Hadir", 
+                            ucapan: "aaaaa selamat yaaa bestieee semoga lancar acaranyaaa", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "bayu sentosa", 
+                            rsvp: "Hadir", 
+                            ucapan: "Selamat ya broo semoga lancar acaranyaaa dan menjadi keluarga yang sakinah mawaddah warahmah", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "wanda asmara", 
+                            rsvp: "Hadir", 
+                            ucapan: "Selamat yaaa semoga lancar acaranyaaa dan menjadi keluarga yang sakinah mawaddah warahmah", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        { 
+                            nama: "pria tampan", 
+                            rsvp: "Hadir", 
+                            ucapan: "selamat cuy semoga lancar acaranyaaa dan menjadi keluarga yang sakinah mawaddah warahmah", 
+                            timestamp: Date.now() - 3600000 * 5 
+                        },
+                        
+                    ];
+                    localStorage.setItem(`wishes_${APP_ID}`, JSON.stringify(localWishes));
+                }
+                
+                // Langsung cetak ke layar secara instan
                 renderWishes(localWishes);
+                
+            } catch (error) {
+                console.error("Terjadi masalah saat membaca Local Storage:", error);
+                // Hapus cache yang error dan muat ulang halaman
+                localStorage.removeItem(`wishes_${APP_ID}`);
+                location.reload();
             }
         }
 
-        // AKTIFKAN STREAMING DATA REALTIME (onSnapshot)
-        function listenToWishes() {
-            logMsg("Berlangganan aliran data real-time Firestore...");
-            
-            // Path Koleksi yang aman & terenkripsi
-            const collectionPath = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('ucapan');
+        // Panggil fungsi saat elemen HTML sudah selesai dimuat browser
+        window.addEventListener('DOMContentLoaded', () => {
+            loadInitialWishes();
+        });
 
-            // Kita sengaja tidak memakai query 'orderBy' pada database agar tidak memicu Index Error pada Firebase pemula!
-            // Pengurutan akan dilakukan secara aman menggunakan JavaScript lokal.
-            collectionPath.onSnapshot((snapshot) => {
-                logMsg(`Menerima pembaruan data! Jumlah dokumen: ${snapshot.size}`);
-                const wishes = [];
-                snapshot.forEach((doc) => {
-                    const data = doc.data();
-                    wishes.push({
-                        id: doc.id,
-                        nama: data.nama,
-                        rsvp: data.rsvp,
-                        ucapan: data.ucapan,
-                        timestamp: data.timestamp
-                    });
-                });
-                renderWishes(wishes);
-            }, (error) => {
-                logMsg(`Error Sinkronisasi: ${error.message}`, true);
-                logMsg("Kemungkinan aturan Rules di Firestore Anda memblokir penulisan. Pastikan Anda telah mengaktifkan 'Start in test mode'.", true);
-            });
-        }
-
-        // FORM SUBMIT HANDLER
-        wishForm.addEventListener('submit', async (e) => {
+        // --- KETIKA TOMBOL KIRIM DITEKAN ---
+        wishForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
+            // 1. Ambil Data Input
             const nama = inputNama.value.trim();
             const ucapan = inputUcapan.value.trim();
             const rsvp = document.querySelector('input[name="rsvp"]:checked').value;
-            const timestamp = Date.now();
-
+            
             if (!nama || !ucapan) return;
 
+            // 2. Ubah Tombol jadi Loading
             btnKirim.disabled = true;
-            btnKirim.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Mengirimkan doa...';
-            logMsg(`Mencoba mengirim ucapan dari "${nama}"...`);
+            btnKirim.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Mengirim...';
 
-            const payload = { nama, ucapan, rsvp, timestamp };
+            // 3. Susun URL Google Sheets
+            const urlDenganData = `${SCRIPT_URL}?nama=${encodeURIComponent(nama)}&rsvp=${encodeURIComponent(rsvp)}&ucapan=${encodeURIComponent(ucapan)}`;
 
-            if (isFirebaseConnected) {
-                try {
-                    const collectionPath = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('ucapan');
-                    await collectionPath.add(payload);
-                    logMsg("Ucapan berhasil tersimpan secara online di Cloud!");
-                    
-                    inputNama.value = '';
-                    inputUcapan.value = '';
-                } catch (error) {
-                    logMsg(`Gagal Kirim Cloud: ${error.message}`, true);
-                    alert("Gagal mengirim pesan secara online. Silakan cek pemantau sistem di bawah halaman.");
-                }
-            } else {
-                // Mode Lokal Simpan ke LocalStorage
-                localWishes.push(payload);
-                localStorage.setItem(`wishes_${appId}`, JSON.stringify(localWishes));
-                renderWishes(localWishes);
-                logMsg("Pesan anda terkirim ke database mempelai.");
-
-                inputNama.value = '';
-                inputUcapan.value = '';
-            }
-
-            btnKirim.disabled = false;
-            btnKirim.innerHTML = '<i class="fa-solid fa-paper-plane mr-1"></i> Kirim Ucapan';
-        });
-
-        // DATA SIMULASI AWAL (MOCK DATA)
-        function getMockData() {
-            return [
-                {
-                    nama: "Pak De Joko",
-                    rsvp: "Hadir",
-                    ucapan: "Selamat ya Ranif dan Riris! Semoga dilancarkan hingga hari H nanti. Menjadi keluarga yang sakinah, mawaddah, warahmah.",
-                    timestamp: Date.now() - 3600000 * 3
-                },
-                {
-                    nama: "Aulia Putri (Sahabat riris)",
-                    rsvp: "Hadir",
-                    ucapan: "Cantik bgt siii ! Lancar sampai hari H yaa sayang. Gak sabar mau dateng kesana bareng temen-temen angkatan kita!",
-                    timestamp: Date.now() - 3600000 * 1.5
-                }
+            // 4. Kirim ke Google Sheets
+            fetch(urlDenganData, {
+                method: "GET",
+                mode: "no-cors"
+            })
+            .then(() => {
+                // 5. Sukses Kirim: Simpan ke Local Storage agar langsung muncul di layar
+                const payload = { 
+                    nama: nama, 
+                    ucapan: ucapan, 
+                    rsvp: rsvp, 
+                    timestamp: Date.now() 
+                };
                 
-                    
-            ];
-        }
+                localWishes.unshift(payload); // Taruh di urutan paling atas
+                localStorage.setItem(`wishes_${APP_ID}`, JSON.stringify(localWishes));
 
-        // Mulai jalankan aplikasi setelah semua elemen siap
-        window.addEventListener('DOMContentLoaded', () => {
-            initDatabase();
+                // 6. Update Layar
+                renderWishes(localWishes);
+
+                // 7. Bersihkan Form & Kembalikan Tombol
+                wishForm.reset();
+                btnKirim.disabled = false;
+                btnKirim.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Ucapan';
+                
+                // Opsional: Notifikasi kecil
+                alert("Terima kasih! Ucapan Anda telah terkirim.");
+            })
+            .catch(err => {
+                alert("Maaf, terjadi gangguan koneksi saat mengirim ucapan.");
+                btnKirim.disabled = false;
+                btnKirim.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Coba Lagi';
+            });
         });
+
+        // --- INISIALISASI SAAT HALAMAN SELESAI DIMUAT ---
+        
     </script>
-    
-</body>
-</html>
+
+
 
         <!-- Closing Footer Section -->
-        <footer class="bg-[#020617] py-16 px-4 text-center border-t border-blue-950/80 relative">
+        <footer class="bg-black/20 py-16 px-4 text-center border-t border-white/20 relative">
             <div class="absolute inset-0 border-4 border-double border-yellow-600/10 m-3 pointer-events-none rounded-2xl"></div>
             
             <div class="max-w-xl mx-auto space-y-6 relative z-10">
@@ -2217,14 +2178,7 @@ Buat ucapan dengan panjang antara 2-3 kalimat yang sangat menyentuh hati dan ber
 
             // Set up System instructions containing wedding metadata
             const systemInstructions = `Anda adalah asisten virtual premium pernikahan "Dirgantara AI Companion" untuk pernikahan Muhammad Ranif (Ranif) dan Prima Rizki Imami (Riris). 
-Informasi penting pernikahan:
-- Mempelai Pria: Muhammad Ranif (Ranif), anak ke-1 dari Bapak Suherman & Ibu (Almh) Novita. Ranif adalah prajurit Dirgantara TNI AU (Angkatan Udara).
-- Mempelai Wanita: Prima Rizki Imami (Riris), anak ke-1 dari Bapak Latif & Ibu Mujiati.
-- Akad & Resepsi: Minggu, 25 Oktober 2026 pukul 08.00 WIB s/d selesai di kediaman mempelai wanita (Kediri).
-- Tema: TNI AU (Navy/Dirgantara Blue, Gold, Sky Blue).
-- Dress Code rekomendasi tamu: Biru Angkatan Udara, Biru Tua, Navy, Abu-abu, dengan aksen Emas/Kuning.
-- Kado Digital: Rekening BRI 201701027685507 a.n. Muhammad Ranif dan Rekening BNI 1120535001 a.n. Prima Rizki Imami.
-- Lokasi Maps: https://maps.app.goo.gl/TrYGVYo113xu8PE39?g_st=ac
+
 
 Gunakan nada bicara yang sopan, ramah, hangat, dan penuh rasa hormat (gunakan sapaan Kakak, Bapak, Ibu). Bantu tamu memberikan ucapan selamat yang luar biasa, merekomendasikan pakaian, atau mengarahkan mereka ke rute yang tepat. Jawablah secara padat (maksimal 3-4 kalimat).`;
 
@@ -2252,89 +2206,13 @@ Gunakan nada bicara yang sopan, ramah, hangat, dan penuh rasa hormat (gunakan sa
         }
 
         // Guestbook / Form Handling Mechanics
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const nameInput = document.getElementById('senderNameInput');
-            const attendanceInput = document.getElementById('attendanceInput');
-            const messageInput = document.getElementById('messageInput');
-
-            const newWish = {
-                name: nameInput.value,
-                attendance: attendanceInput.value,
-                message: messageInput.value,
-                timestamp: new Date().toISOString()
-            };
-
-            // Save to existing array in local storage
-            const currentWishes = getWishes();
-            currentWishes.unshift(newWish); // Push to the top of list
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(currentWishes));
-
-            // Reset Input Values
-            nameInput.value = '';
-            attendanceInput.value = '';
-            messageInput.value = '';
-
-            // Update UI rendering
-            renderWishes();
-        }
-
-        function getWishes() {
-            const data = localStorage.getItem(STORAGE_KEY);
-            if (!data) {
-                // Prepopulate with templates on first launch
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(templateWishes));
-                return templateWishes;
-            }
-            return JSON.parse(data);
-        }
-
-        function renderWishes() {
-            const wishes = getWishes();
-            const wishesFeed = document.getElementById('wishesFeed');
-            const totalCount = document.getElementById('totalWishesCount');
-            
-            wishesFeed.innerHTML = '';
-            totalCount.innerText = `${wishes.length} Ucapan`;
-
-            wishes.forEach(wish => {
-                const dateParsed = new Date(wish.timestamp);
-                const timeStr = dateParsed.toLocaleDateString('id-ID', {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                // Attendance Badge Coloring Style
-                let attendanceBadgeClass = 'bg-emerald-950/80 text-emerald-400 border border-emerald-900/60';
-                if (wish.attendance === 'Tidak Hadir') {
-                    attendanceBadgeClass = 'bg-rose-950/80 text-rose-400 border border-rose-900/60';
-                } else if (wish.attendance === 'Masih Ragu') {
-                    attendanceBadgeClass = 'bg-amber-950/80 text-amber-400 border border-amber-900/60';
-                }
-
-                const wishCard = document.createElement('div');
-                wishCard.className = "p-4 bg-blue-950/40 border border-blue-900/40 rounded-2xl space-y-2 relative shadow-md";
-                wishCard.innerHTML = `
-                    <div class="flex items-center justify-between gap-2 flex-wrap">
-                        <span class="font-serif font-bold text-white text-sm">${wish.name}</span>
-                        <span class="text-[10px] px-2.5 py-0.5 rounded-full font-semibold uppercase ${attendanceBadgeClass}">${wish.attendance}</span>
-                    </div>
-                    <p class="text-xs text-gray-300 leading-relaxed font-light break-words">${wish.message}</p>
-                    <div class="text-[9px] text-gray-500 text-right">${timeStr}</div>
-                `;
-                wishesFeed.appendChild(wishCard);
-            });
-        }
+      
 
         // Document Initialization sequence on window load
         window.onload = function() {
             getRecipientName();
             initCountdown();
-            renderWishes();
+        
         };
     </script>
 </body>
